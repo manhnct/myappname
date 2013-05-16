@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical" >
+	
+	    <Button
+			android:id="@+id/enable_ime" 
+			android:layout_width="fill_parent"	android:layout_height="wrap_content" 
+			android:layout_gravity="center_horizontal"
+			android:layout_marginLeft="20dp" android:layout_marginRight="20dp" android:layout_marginTop="40dp"
+			android:background="@drawable/button_bg"
+			android:paddingLeft="10dp"
+			android:paddingRight="10dp"
+			android:text="@string/main_enable"
+			android:textColor="@color/black" />
+			    
+	    
+	
+	    <Button
+	        android:id="@+id/choose_ime"
+	        android:layout_width="fill_parent"	android:layout_height="wrap_content" 
+			android:layout_gravity="center_horizontal"
+			android:layout_marginLeft="20dp" android:layout_marginRight="20dp" android:layout_marginTop="20dp"
+			android:background="@drawable/button_bg"
+			android:paddingLeft="10dp"
+			android:paddingRight="10dp"
+			android:text="@string/main_choose"
+			android:textColor="@color/black" />
+	
+	    <Button
+	        
+	        android:id="@+id/settings_ime"
+	        android:layout_width="fill_parent"	android:layout_height="wrap_content" 
+			android:layout_gravity="center_horizontal"
+			android:layout_marginLeft="20dp" android:layout_marginRight="20dp" android:layout_marginTop="20dp"
+			android:background="@drawable/button_bg"
+			android:paddingLeft="10dp"
+			android:paddingRight="10dp"
+			android:text="@string/main_setting"
+			android:textColor="@color/black" />
+	
+	
+	
+	</LinearLayout>
+	<LinearLayout 
+	    android:layout_width="fill_parent"
+	    android:layout_height="50dp">
+	    
+	</LinearLayout>
+	<LinearLayout 
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    >
+	    
+	        <TextView
+        android:id="@+id/about_ime"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="   Facebook Page:"
+        android:textColor="#b1b1b1" />
+	</LinearLayout>
+	<LinearLayout 
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    >
+	    
+	        <TextView
+        android:id="@+id/about_ime"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="   http://www.facebook.com/QuickKeyboardViet"
+        android:textColor="#b1b1b1" />
+	</LinearLayout>
+</LinearLayout>

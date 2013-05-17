@@ -1660,8 +1660,11 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
     private void handleCharacter(final int primaryCode, final int x,
             final int y, final int spaceState) {
-    	if (handleVietnameseCharacter(primaryCode, x, y, spaceState)) {
+    	int check =handleVietnameseCharacter(primaryCode, x, y, spaceState);
+    	if (check == 1) {
     		adjustAccent(false);
+        	return;
+        }else if(check == 2){
         	return;
         }
     	
@@ -2617,23 +2620,23 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         p.println("  mKeyPreviewPopupOn=" + mSettingsValues.mKeyPreviewPopupOn);
         p.println("  mInputAttributes=" + mInputAttributes.toString());
     }
-    private boolean handleVietnameseCharacter(int originalTypedChar, int x, int y, int spaceState) {
+    private int handleVietnameseCharacter(int originalTypedChar, int x, int y, int spaceState) {
     	if (mIsUsingTelexInputMethod )
     		return handleVietnameseCharacter_TELEX(originalTypedChar, x, y, spaceState);
     	if (mIsUsingVNIInputMethod )
     		return handleVietnameseCharacter_VNI(originalTypedChar, x, y, spaceState);
-    	return false;
+    	return 0;
     }
     
-    private boolean handleVietnameseCharacter_TELEX(int originalTypedChar, int x, int y, int spaceState) {
+    private int handleVietnameseCharacter_TELEX(int originalTypedChar, int x, int y, int spaceState) {
     	final int typedChar = Character.toLowerCase(originalTypedChar);
     	if (!shouldHandleVietnameseCharacter(typedChar)) {
-    		return false;		
+    		return 0;		
     	}
     	final boolean isComposingWord = mWordComposer.isComposingWord();
     	
     	final InputConnection ic = getCurrentInputConnection();
-        if (ic == null) return false;
+        if (ic == null) return 0;
                     	        
         mTempCurrentWord.setLength(0);
         StringBuilder currentWord = mTempCurrentWord;        
@@ -2654,14 +2657,28 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     	if (currentWord == null || currentWord.length() == 0) {
     		if (typedChar == 'w') {
     			mLastWConverted = originalTypedChar;
+    			ic.beginBatchEdit();
+    	        // TODO: if ic is null, does it make any sense to call this?                
     			handleCharacterWhileInBatchEdit(originalTypedChar == 'w' ? 'ư' : 'Ư', x, y, spaceState, ic);
-    			return true;
+    	        ic.endBatchEdit();
+    			
+    			return 1;
+        	}else{
+        		for (int i = 0; i < CHARACTER_FJ.length; i++) {
+        			if (originalTypedChar == CHARACTER_FJ[i]){
+        				ic.beginBatchEdit();
+        				handleCharacterWhileInBatchEdit(CHARACTER_FJ_REPLACE[i].charAt(0), x, y, spaceState, ic);
+        				handleCharacterWhileInBatchEdit(CHARACTER_FJ_REPLACE[i].charAt(1), x, y, spaceState, ic);
+        				ic.endBatchEdit();
+        				return 2;
+        			}
+        		}
         	}
-    		return false;
+    		return 0;
     	}
     	
     	if (!VietnameseSpellChecker.isVietnameseWord(currentWord)) {
-    		return false;
+    		return 0;
     	}    	
 
     	int replacedCharIndex = -1;
@@ -2817,28 +2834,28 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             }
             ic.endBatchEdit();
             
-            return shouldKeepCurrentChar ? false : true; // return false to call the original handleCharacter
+            return shouldKeepCurrentChar ? 0 : 1; // return false to call the original handleCharacter
             
     	} else if (typedChar == 'w') {
     		mLastWConverted = originalTypedChar;
     		handleCharacterWhileInBatchEdit(originalTypedChar == 'w' ? 'ư' : 'Ư', x, y, spaceState, ic);
-			return true;
+			return 1;
     	}
     	
-    	return false;
+    	return 0;
     }
     
-    private boolean handleVietnameseCharacter_VNI(int originalTypedChar, int x, int y, int spaceState) {
+    private int handleVietnameseCharacter_VNI(int originalTypedChar, int x, int y, int spaceState) {
     	Log.i(TAG, "handle Vietnamese Charater VNI begin");
     	final int typedChar = Character.toLowerCase(originalTypedChar);
 
     	if (!shouldHandleVietnameseCharacter(typedChar)) {
-    		return false;		
+    		return 0;		
     	}
     	final boolean isComposingWord = mWordComposer.isComposingWord();
     	
     	final InputConnection ic = getCurrentInputConnection();
-        if (ic == null) return false;
+        if (ic == null) return 0;
                     	        
         mTempCurrentWord.setLength(0);
         StringBuilder currentWord = mTempCurrentWord;        
@@ -2860,12 +2877,21 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     	}
     	
     	if (currentWord == null || currentWord.length() == 0) {
-    		return false;
+    		for (int i = 0; i < CHARACTER_FJ.length; i++) {
+    			if (originalTypedChar == CHARACTER_FJ[i]){
+    				ic.beginBatchEdit();
+    				handleCharacterWhileInBatchEdit(CHARACTER_FJ_REPLACE[i].charAt(0), x, y, spaceState, ic);
+    				handleCharacterWhileInBatchEdit(CHARACTER_FJ_REPLACE[i].charAt(1), x, y, spaceState, ic);
+    				ic.endBatchEdit();
+    				return 2;
+    			}
+    		}
+    		return 0;
     	}
     	
     	if (!VietnameseSpellChecker.isVietnameseWord(currentWord)) {
     		//Log.i(TAG, "handle Vietnamese Charater VNI: not is Vietnamese Word. Return false");
-    		return false;
+    		return 0;
     	}    	
 
     	int replacedCharIndex = -1;
@@ -3021,15 +3047,15 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             }
             ic.endBatchEdit();
             
-            return shouldKeepCurrentChar ? false : true; // return false to call the original handleCharacter
+            return shouldKeepCurrentChar ? 0 : 1; // return false to call the original handleCharacter
             
     	} else if (typedChar == 'w') {
     		mLastWConverted = originalTypedChar;
     		handleCharacterWhileInBatchEdit(originalTypedChar == 'w' ? 'ư' : 'Ư', x, y, spaceState, ic);
-			return true;
+			return 1;
     	}
     	
-    	return false;
+    	return 0;
     }
     
     private void adjustAccent(boolean fixUWOW) {
@@ -3132,7 +3158,9 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     		typedChar == '2' || // a2 -> à    
     		typedChar == '3' || // a3 -> ả
     		typedChar == '4' || // a4 -> ã
-    		typedChar == '5';   // a5 -> ạ    		
+    		typedChar == '5' || // a5 -> ạ
+    		typedChar == 'f' || // f->ph
+    		typedChar == 'j';	// f->gi	
     }
     
     private void handleVietnameseSwitchKey() {
@@ -3342,4 +3370,9 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     private static final int[] VN_VOWELS = VietnameseSpellChecker.VN_VOWELS;        
 
     private static final int MAX_VOWELS_SEQUENCE = 3;
+    
+    private static final int[] CHARACTER_FJ = { 'f', 'F', 'j', 'J' };
+	private static final String[] CHARACTER_FJ_REPLACE = { "ph", "Ph", "gi", "Gi" };
+
+
 }

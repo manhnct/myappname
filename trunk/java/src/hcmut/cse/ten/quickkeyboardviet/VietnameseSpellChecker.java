@@ -57,6 +57,9 @@ public class VietnameseSpellChecker {
 		
 		for (int pos = 0; pos < wordLength; pos++) {
 			int ch = (int)word.charAt(pos);
+			
+			
+					
 			// check if this character is a vowel
 			int vowelPosition = -1;
 			for (int i = 0; i < VN_VOWELS.length; i++) {
@@ -67,6 +70,7 @@ public class VietnameseSpellChecker {
 					break;
 				}
 			}
+			
 			
 			// yes, it's a vowel
 			if (vowelPosition != -1) {
@@ -268,4 +272,6 @@ public class VietnameseSpellChecker {
 	private static final int VOWEL_WITH_BREVE = 12 * 6;
 	
 	public static final int ACCENT_AUTO = 0;
+	
+
 }

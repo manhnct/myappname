@@ -192,7 +192,7 @@
     <string name="subtype_generic_qwerty">%s (QWERTY)</string>
     <string name="subtype_generic_qwertz">%s (QWERTZ)</string>
     <string name="subtype_generic_pcqwerty">%s (PC)</string>
-    <string name="subtype_generic_vietnamese">%s (Quick)</string>
+    <string name="subtype_generic_vietnamese">QUICK</string>
 
     <!-- Description for Bulgarian (BDS) subtype. -->
     <string name="subtype_bulgarian_bds">%s (BDS)</string>

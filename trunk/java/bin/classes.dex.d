@@ -281,5 +281,6 @@ C:\Android\QuickKeyboardViet\java\bin\classes\hcmut\cse\ten\quickkeyboardviet\R$
 C:\Android\QuickKeyboardViet\java\bin\classes\hcmut\cse\ten\quickkeyboardviet\R$xml.class \
 C:\Android\QuickKeyboardViet\java\bin\classes\hcmut\cse\ten\quickkeyboardviet\R.class \
 C:\Android\QuickKeyboardViet\java\bin\classes\hcmut\cse\ten\quickkeyboardviet\VietnameseSpellChecker.class \
+C:\Android\QuickKeyboardViet\java\bin\classes\R.java.d \
 C:\Android\QuickKeyboardViet\java\bin\dexedLibs\annotations-a36f63f569ba1f93b5f8f41e125a1d8c.jar \
 C:\Android\QuickKeyboardViet\java\bin\dexedLibs\android-support-v4-092c483dfe44f4f5abda332c63f3d711.jar \

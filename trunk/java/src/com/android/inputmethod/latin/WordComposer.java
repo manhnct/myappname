@@ -354,6 +354,9 @@ public class WordComposer {
         mTypedWord.setCharAt(pos, ch);
         if (Character.isUpperCase(charAt) && !Character.isUpperCase(ch)) mCapsCount--;
     }
+    public void replaceString(int start, int end, String s){
+    	mTypedWord.replace(start, end, s);
+    }
 
 	public StringBuilder getComposingWord() {
 		return mTypedWord;		

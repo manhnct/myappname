@@ -57,9 +57,6 @@ public class VietnameseSpellChecker {
 		
 		for (int pos = 0; pos < wordLength; pos++) {
 			int ch = (int)word.charAt(pos);
-			
-			
-					
 			// check if this character is a vowel
 			int vowelPosition = -1;
 			for (int i = 0; i < VN_VOWELS.length; i++) {
@@ -70,7 +67,6 @@ public class VietnameseSpellChecker {
 					break;
 				}
 			}
-			
 			
 			// yes, it's a vowel
 			if (vowelPosition != -1) {
@@ -257,6 +253,44 @@ public class VietnameseSpellChecker {
     	'Ư', 'Ứ', 'Ừ', 'Ử', 'Ữ', 'Ự'    	    	   	    	    	
     };
 	
+	public static final char[] VNVOWELS = {
+    	'a', 'á', 'à', 'ả', 'ã', 'ạ',
+    	'A', 'Á', 'À', 'Ả', 'Ã', 'Ạ',
+    	
+    	'e', 'é', 'è', 'ẻ', 'ẽ', 'ẹ',
+    	'E', 'É', 'È', 'Ẻ', 'Ẽ', 'Ẹ',
+    	
+    	'o', 'ó', 'ò', 'ỏ', 'õ', 'ọ',
+    	'O', 'Ó', 'Ò', 'Ỏ', 'Õ', 'Ọ',
+    	
+    	'u', 'ú', 'ù', 'ủ', 'ũ', 'ụ',
+    	'U', 'Ú', 'Ù', 'Ủ', 'Ũ', 'Ụ',
+    	
+    	'i', 'í', 'ì', 'ỉ', 'ĩ', 'ị',
+    	'I', 'Í', 'Ì', 'Ỉ', 'Ĩ', 'Ị',
+    	
+    	'y', 'ý', 'ỳ', 'ỷ', 'ỹ', 'ỵ',    	
+    	'Y', 'Ý', 'Ỳ', 'Ỷ', 'Ỹ', 'Ỵ',
+    	
+    	'â', 'ấ', 'ầ', 'ẩ', 'ẫ', 'ậ',
+    	'Â', 'Ấ', 'Ầ', 'Ẩ', 'Ẫ', 'Ậ',
+    	
+    	'ă', 'ắ', 'ằ', 'ẳ', 'ẵ', 'ặ',
+    	'Ă', 'Ắ', 'Ằ', 'Ẳ', 'Ẵ', 'Ặ',
+    	
+    	'ê', 'ế', 'ề', 'ể', 'ễ', 'ệ',
+    	'Ê', 'Ế', 'Ề', 'Ể', 'Ễ', 'Ệ',
+    	
+    	'ô', 'ố', 'ồ', 'ổ', 'ỗ', 'ộ',
+    	'Ô', 'Ố', 'Ồ', 'Ổ', 'Ỗ', 'Ộ',
+    	
+    	'ơ', 'ớ', 'ờ', 'ở', 'ỡ', 'ợ',
+    	'Ơ', 'Ớ', 'Ờ', 'Ở', 'Ỡ', 'Ợ',
+    	
+    	'ư', 'ứ', 'ừ', 'ử', 'ữ', 'ự',    	
+    	'Ư', 'Ứ', 'Ừ', 'Ử', 'Ữ', 'Ự'    	    	   	    	    	
+    };
+	
 	private static final int[][] NON_VIETNAMESE_CHARACTERS = {
     	{'B', 1}, {'D', 1}, {'F', 0}, {'J', 0}, {'K', 1}, {'L', 1}, {'Q', 1}, 
     	{'R', 2}, {'S', 1}, {'V', 1}, {'W', 0}, {'X', 1}, {'Z', 0}
@@ -272,6 +306,4 @@ public class VietnameseSpellChecker {
 	private static final int VOWEL_WITH_BREVE = 12 * 6;
 	
 	public static final int ACCENT_AUTO = 0;
-	
-
 }

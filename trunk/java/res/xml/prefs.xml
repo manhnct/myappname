@@ -37,6 +37,22 @@
          android:entries="@array/vietnamese_input_methods"
          android:defaultValue="Telex" />
         
+        <PreferenceScreen 
+            android:title="Gõ tắt"
+            android:key="vietnamese_gotat"
+            android:summary="">
+            <CheckBoxPreference 
+                android:title="Tự đổi phụ âm đầu"
+                android:key="vietnamese_PAD"
+                android:summary="f->ph, j->gi. VD: fá->phá"
+                android:defaultValue="false"/>
+            <CheckBoxPreference 
+                android:title="Tự đổi phụ âm cuối"
+                android:key="vietnamese_PAC"
+                android:summary="h->nh, g->ng. VD: ngag->ngang"
+                android:defaultValue="false"/>
+        </PreferenceScreen>
+        
         <CheckBoxPreference
             android:key="typing_freedom"
             android:title="@string/typing_freedom"

@@ -1501,6 +1501,7 @@ containing a value of this type.
         public static final int config_touch_noise_threshold_distance=0x7f0b0001;
         public static final int key_hint_letter_padding=0x7f0b000c;
         public static final int key_hint_letter_padding_quick=0x7f0b001f;
+        public static final int key_hint_letter_padding_wp=0x7f0b0023;
         /**  left or right padding of label alignment 
  left or right padding of label alignment 
  left or right padding of label alignment 
@@ -1509,12 +1510,15 @@ containing a value of this type.
          */
         public static final int key_label_horizontal_padding=0x7f0b000b;
         public static final int key_label_horizontal_padding_quick=0x7f0b0020;
+        public static final int key_label_horizontal_padding_wp=0x7f0b0024;
         public static final int key_popup_hint_letter_padding=0x7f0b000d;
         public static final int key_preview_height=0x7f0b0009;
         public static final int key_preview_height_quick=0x7f0b0021;
+        public static final int key_preview_height_wp=0x7f0b0025;
         public static final int key_preview_offset=0x7f0b000a;
         public static final int key_preview_offset_ics=0x7f0b000f;
         public static final int key_preview_offset_quick=0x7f0b001e;
+        public static final int key_preview_offset_wp=0x7f0b0022;
         public static final int key_uppercase_letter_padding=0x7f0b000e;
         /**  Preferable keyboard height in absolute scale: 1.285in 
  This keyboardHeight value should match with keyboard-heights.xml 
@@ -1615,104 +1619,115 @@ containing a value of this type.
         public static final int btn_keyboard_key_light_normal=0x7f020019;
         public static final int btn_keyboard_key_light_normal_holo=0x7f02001a;
         public static final int btn_keyboard_key_light_normal_quick=0x7f02001b;
-        public static final int btn_keyboard_key_light_popup_selected=0x7f02001c;
-        public static final int btn_keyboard_key_light_pressed=0x7f02001d;
-        public static final int btn_keyboard_key_light_pressed_holo=0x7f02001e;
-        public static final int btn_keyboard_key_light_pressed_quick=0x7f02001f;
-        public static final int btn_keyboard_key_normal=0x7f020020;
-        public static final int btn_keyboard_key_normal_off=0x7f020021;
-        public static final int btn_keyboard_key_normal_off_stone=0x7f020022;
-        public static final int btn_keyboard_key_normal_on=0x7f020023;
-        public static final int btn_keyboard_key_normal_on_stone=0x7f020024;
-        public static final int btn_keyboard_key_normal_stone=0x7f020025;
-        public static final int btn_keyboard_key_popup=0x7f020026;
-        public static final int btn_keyboard_key_popup_ics=0x7f020027;
-        public static final int btn_keyboard_key_popup_selected_holo=0x7f020028;
-        public static final int btn_keyboard_key_pressed=0x7f020029;
-        public static final int btn_keyboard_key_pressed_off=0x7f02002a;
-        public static final int btn_keyboard_key_pressed_on=0x7f02002b;
-        public static final int btn_keyboard_key_quick=0x7f02002c;
-        public static final int btn_keyboard_key_stone=0x7f02002d;
-        public static final int btn_suggestion=0x7f02002e;
-        public static final int btn_suggestion_ics=0x7f02002f;
-        public static final int btn_suggestion_pressed=0x7f020030;
-        public static final int button_bg=0x7f020031;
-        public static final int ic_ime_settings=0x7f020032;
-        public static final int ic_ime_settings_old=0x7f020033;
-        public static final int ic_subtype_keyboard=0x7f020034;
-        public static final int keyboard_background=0x7f020035;
-        public static final int keyboard_background_holo=0x7f020036;
-        public static final int keyboard_background_quick=0x7f020037;
-        public static final int keyboard_dark_background=0x7f020038;
-        public static final int keyboard_key_feedback=0x7f020039;
-        public static final int keyboard_key_feedback_background=0x7f02003a;
-        public static final int keyboard_key_feedback_background_holo=0x7f02003b;
-        public static final int keyboard_key_feedback_background_quick=0x7f02003c;
-        public static final int keyboard_key_feedback_ics=0x7f02003d;
-        public static final int keyboard_key_feedback_left_background_holo=0x7f02003e;
-        public static final int keyboard_key_feedback_left_background_quick=0x7f02003f;
-        public static final int keyboard_key_feedback_left_ics=0x7f020040;
-        public static final int keyboard_key_feedback_left_more_background_holo=0x7f020041;
-        public static final int keyboard_key_feedback_left_more_background_quick=0x7f020042;
-        public static final int keyboard_key_feedback_left_quick=0x7f020043;
-        public static final int keyboard_key_feedback_more_background=0x7f020044;
-        public static final int keyboard_key_feedback_more_background_holo=0x7f020045;
-        public static final int keyboard_key_feedback_more_background_quick=0x7f020046;
-        public static final int keyboard_key_feedback_quick=0x7f020047;
-        public static final int keyboard_key_feedback_right_background_holo=0x7f020048;
-        public static final int keyboard_key_feedback_right_background_quick=0x7f020049;
-        public static final int keyboard_key_feedback_right_ics=0x7f02004a;
-        public static final int keyboard_key_feedback_right_more_background_holo=0x7f02004b;
-        public static final int keyboard_key_feedback_right_more_background_quick=0x7f02004c;
-        public static final int keyboard_key_feedback_right_quick=0x7f02004d;
-        public static final int keyboard_popup_panel_background=0x7f02004e;
-        public static final int keyboard_popup_panel_background_holo=0x7f02004f;
-        public static final int keyboard_suggest_strip=0x7f020050;
-        public static final int keyboard_suggest_strip_holo=0x7f020051;
-        public static final int keyboard_suggest_strip_quick=0x7f020052;
-        public static final int more_keys_divider=0x7f020053;
-        public static final int more_suggestions_divider=0x7f020054;
-        public static final int suggestion_feedback_background=0x7f020055;
-        public static final int suggestions_strip_divider=0x7f020056;
-        public static final int sym_bkeyboard_delete=0x7f020057;
-        public static final int sym_bkeyboard_label_mic=0x7f020058;
-        public static final int sym_bkeyboard_mic=0x7f020059;
-        public static final int sym_bkeyboard_return=0x7f02005a;
-        public static final int sym_bkeyboard_search=0x7f02005b;
-        public static final int sym_bkeyboard_settings=0x7f02005c;
-        public static final int sym_bkeyboard_shift=0x7f02005d;
-        public static final int sym_bkeyboard_shift_locked=0x7f02005e;
-        public static final int sym_bkeyboard_space=0x7f02005f;
-        public static final int sym_bkeyboard_tab=0x7f020060;
-        public static final int sym_bkeyboard_voice_off=0x7f020061;
-        public static final int sym_keyboard_delete=0x7f020062;
-        public static final int sym_keyboard_delete_holo=0x7f020063;
-        public static final int sym_keyboard_feedback_tab=0x7f020064;
-        public static final int sym_keyboard_label_mic=0x7f020065;
-        public static final int sym_keyboard_label_mic_holo=0x7f020066;
-        public static final int sym_keyboard_language_switch=0x7f020067;
-        public static final int sym_keyboard_mic=0x7f020068;
-        public static final int sym_keyboard_return=0x7f020069;
-        public static final int sym_keyboard_return_holo=0x7f02006a;
-        public static final int sym_keyboard_search=0x7f02006b;
-        public static final int sym_keyboard_search_holo=0x7f02006c;
-        public static final int sym_keyboard_settings=0x7f02006d;
-        public static final int sym_keyboard_settings_holo=0x7f02006e;
-        public static final int sym_keyboard_shift=0x7f02006f;
-        public static final int sym_keyboard_shift_holo=0x7f020070;
-        public static final int sym_keyboard_shift_locked=0x7f020071;
-        public static final int sym_keyboard_shift_locked_holo=0x7f020072;
-        public static final int sym_keyboard_space=0x7f020073;
-        public static final int sym_keyboard_space_holo=0x7f020074;
-        public static final int sym_keyboard_space_led=0x7f020075;
-        public static final int sym_keyboard_space_led_holo=0x7f020076;
-        public static final int sym_keyboard_tab=0x7f020077;
-        public static final int sym_keyboard_tab_holo=0x7f020078;
-        public static final int sym_keyboard_voice_holo=0x7f020079;
-        public static final int sym_keyboard_voice_off_holo=0x7f02007a;
-        public static final int sym_keyboard_zwj_holo=0x7f02007b;
-        public static final int sym_keyboard_zwnj_holo=0x7f02007c;
-        public static final int transparent=0x7f02007d;
+        public static final int btn_keyboard_key_light_normal_wp=0x7f02001c;
+        public static final int btn_keyboard_key_light_popup_selected=0x7f02001d;
+        public static final int btn_keyboard_key_light_pressed=0x7f02001e;
+        public static final int btn_keyboard_key_light_pressed_holo=0x7f02001f;
+        public static final int btn_keyboard_key_light_pressed_quick=0x7f020020;
+        public static final int btn_keyboard_key_light_pressed_wp=0x7f020021;
+        public static final int btn_keyboard_key_normal=0x7f020022;
+        public static final int btn_keyboard_key_normal_off=0x7f020023;
+        public static final int btn_keyboard_key_normal_off_stone=0x7f020024;
+        public static final int btn_keyboard_key_normal_on=0x7f020025;
+        public static final int btn_keyboard_key_normal_on_stone=0x7f020026;
+        public static final int btn_keyboard_key_normal_stone=0x7f020027;
+        public static final int btn_keyboard_key_popup=0x7f020028;
+        public static final int btn_keyboard_key_popup_ics=0x7f020029;
+        public static final int btn_keyboard_key_popup_selected_holo=0x7f02002a;
+        public static final int btn_keyboard_key_pressed=0x7f02002b;
+        public static final int btn_keyboard_key_pressed_off=0x7f02002c;
+        public static final int btn_keyboard_key_pressed_on=0x7f02002d;
+        public static final int btn_keyboard_key_quick=0x7f02002e;
+        public static final int btn_keyboard_key_stone=0x7f02002f;
+        public static final int btn_keyboard_key_wp=0x7f020030;
+        public static final int btn_suggestion=0x7f020031;
+        public static final int btn_suggestion_ics=0x7f020032;
+        public static final int btn_suggestion_pressed=0x7f020033;
+        public static final int button_bg=0x7f020034;
+        public static final int ic_ime_settings=0x7f020035;
+        public static final int ic_ime_settings_old=0x7f020036;
+        public static final int ic_subtype_keyboard=0x7f020037;
+        public static final int keyboard_background=0x7f020038;
+        public static final int keyboard_background_holo=0x7f020039;
+        public static final int keyboard_background_quick=0x7f02003a;
+        public static final int keyboard_background_wp=0x7f02003b;
+        public static final int keyboard_dark_background=0x7f02003c;
+        public static final int keyboard_key_feedback=0x7f02003d;
+        public static final int keyboard_key_feedback_background=0x7f02003e;
+        public static final int keyboard_key_feedback_background_holo=0x7f02003f;
+        public static final int keyboard_key_feedback_background_quick=0x7f020040;
+        public static final int keyboard_key_feedback_background_wp=0x7f020041;
+        public static final int keyboard_key_feedback_ics=0x7f020042;
+        public static final int keyboard_key_feedback_left_background_holo=0x7f020043;
+        public static final int keyboard_key_feedback_left_background_quick=0x7f020044;
+        public static final int keyboard_key_feedback_left_background_wp=0x7f020045;
+        public static final int keyboard_key_feedback_left_ics=0x7f020046;
+        public static final int keyboard_key_feedback_left_more_background_holo=0x7f020047;
+        public static final int keyboard_key_feedback_left_more_background_quick=0x7f020048;
+        public static final int keyboard_key_feedback_left_more_background_wp=0x7f020049;
+        public static final int keyboard_key_feedback_left_quick=0x7f02004a;
+        public static final int keyboard_key_feedback_more_background=0x7f02004b;
+        public static final int keyboard_key_feedback_more_background_holo=0x7f02004c;
+        public static final int keyboard_key_feedback_more_background_quick=0x7f02004d;
+        public static final int keyboard_key_feedback_more_background_wp=0x7f02004e;
+        public static final int keyboard_key_feedback_quick=0x7f02004f;
+        public static final int keyboard_key_feedback_right_background_holo=0x7f020050;
+        public static final int keyboard_key_feedback_right_background_quick=0x7f020051;
+        public static final int keyboard_key_feedback_right_background_wp=0x7f020052;
+        public static final int keyboard_key_feedback_right_ics=0x7f020053;
+        public static final int keyboard_key_feedback_right_more_background_holo=0x7f020054;
+        public static final int keyboard_key_feedback_right_more_background_quick=0x7f020055;
+        public static final int keyboard_key_feedback_right_more_background_wp=0x7f020056;
+        public static final int keyboard_key_feedback_right_quick=0x7f020057;
+        public static final int keyboard_popup_panel_background=0x7f020058;
+        public static final int keyboard_popup_panel_background_holo=0x7f020059;
+        public static final int keyboard_suggest_strip=0x7f02005a;
+        public static final int keyboard_suggest_strip_holo=0x7f02005b;
+        public static final int keyboard_suggest_strip_quick=0x7f02005c;
+        public static final int keyboard_suggest_strip_wp=0x7f02005d;
+        public static final int more_keys_divider=0x7f02005e;
+        public static final int more_suggestions_divider=0x7f02005f;
+        public static final int suggestion_feedback_background=0x7f020060;
+        public static final int suggestions_strip_divider=0x7f020061;
+        public static final int sym_bkeyboard_delete=0x7f020062;
+        public static final int sym_bkeyboard_label_mic=0x7f020063;
+        public static final int sym_bkeyboard_mic=0x7f020064;
+        public static final int sym_bkeyboard_return=0x7f020065;
+        public static final int sym_bkeyboard_search=0x7f020066;
+        public static final int sym_bkeyboard_settings=0x7f020067;
+        public static final int sym_bkeyboard_shift=0x7f020068;
+        public static final int sym_bkeyboard_shift_locked=0x7f020069;
+        public static final int sym_bkeyboard_space=0x7f02006a;
+        public static final int sym_bkeyboard_tab=0x7f02006b;
+        public static final int sym_bkeyboard_voice_off=0x7f02006c;
+        public static final int sym_keyboard_delete=0x7f02006d;
+        public static final int sym_keyboard_delete_holo=0x7f02006e;
+        public static final int sym_keyboard_feedback_tab=0x7f02006f;
+        public static final int sym_keyboard_label_mic=0x7f020070;
+        public static final int sym_keyboard_label_mic_holo=0x7f020071;
+        public static final int sym_keyboard_language_switch=0x7f020072;
+        public static final int sym_keyboard_mic=0x7f020073;
+        public static final int sym_keyboard_return=0x7f020074;
+        public static final int sym_keyboard_return_holo=0x7f020075;
+        public static final int sym_keyboard_search=0x7f020076;
+        public static final int sym_keyboard_search_holo=0x7f020077;
+        public static final int sym_keyboard_settings=0x7f020078;
+        public static final int sym_keyboard_settings_holo=0x7f020079;
+        public static final int sym_keyboard_shift=0x7f02007a;
+        public static final int sym_keyboard_shift_holo=0x7f02007b;
+        public static final int sym_keyboard_shift_locked=0x7f02007c;
+        public static final int sym_keyboard_shift_locked_holo=0x7f02007d;
+        public static final int sym_keyboard_space=0x7f02007e;
+        public static final int sym_keyboard_space_holo=0x7f02007f;
+        public static final int sym_keyboard_space_led=0x7f020080;
+        public static final int sym_keyboard_space_led_holo=0x7f020081;
+        public static final int sym_keyboard_tab=0x7f020082;
+        public static final int sym_keyboard_tab_holo=0x7f020083;
+        public static final int sym_keyboard_voice_holo=0x7f020084;
+        public static final int sym_keyboard_voice_off_holo=0x7f020085;
+        public static final int sym_keyboard_zwj_holo=0x7f020086;
+        public static final int sym_keyboard_zwnj_holo=0x7f020087;
+        public static final int transparent=0x7f020088;
     }
     public static final class fraction {
         public static final int key_bottom_gap=0x7f0d0005;
@@ -1720,31 +1735,36 @@ containing a value of this type.
         public static final int key_bottom_gap_ics=0x7f0d000f;
         public static final int key_bottom_gap_quick=0x7f0d0022;
         public static final int key_bottom_gap_stone=0x7f0d0009;
+        public static final int key_bottom_gap_wp=0x7f0d002c;
         public static final int key_hint_label_ratio=0x7f0d0016;
         public static final int key_hint_letter_ratio=0x7f0d0015;
         public static final int key_horizontal_gap=0x7f0d0006;
         public static final int key_horizontal_gap_gb=0x7f0d000c;
         public static final int key_horizontal_gap_ics=0x7f0d0010;
         public static final int key_horizontal_gap_ics_bigkeys=0x7f0d001e;
-        public static final int key_horizontal_gap_ics_modified=0x7f0d0029;
+        public static final int key_horizontal_gap_ics_modified=0x7f0d0030;
         public static final int key_horizontal_gap_ics_tallkeys=0x7f0d001d;
         public static final int key_horizontal_gap_quick=0x7f0d0021;
         public static final int key_horizontal_gap_quick_clear=0x7f0d0026;
         public static final int key_horizontal_gap_quick_extra=0x7f0d0027;
         public static final int key_horizontal_gap_quick_extra_clear=0x7f0d0028;
         public static final int key_horizontal_gap_stone=0x7f0d000a;
+        public static final int key_horizontal_gap_wp=0x7f0d002b;
         public static final int key_label_ratio=0x7f0d0013;
         public static final int key_large_label_ratio=0x7f0d0014;
         public static final int key_large_letter_ratio=0x7f0d0012;
         public static final int key_letter_ratio=0x7f0d0011;
         public static final int key_letter_ratio_quick=0x7f0d0023;
+        public static final int key_letter_ratio_wp=0x7f0d002d;
         public static final int key_preview_text_ratio=0x7f0d0018;
         public static final int key_preview_text_ratio_quick=0x7f0d0025;
+        public static final int key_preview_text_ratio_wp=0x7f0d002f;
         public static final int key_uppercase_letter_ratio=0x7f0d0017;
         public static final int keyboard_bottom_padding=0x7f0d0003;
         public static final int keyboard_bottom_padding_ics=0x7f0d000e;
         public static final int keyboard_bottom_padding_quick=0x7f0d0020;
         public static final int keyboard_bottom_padding_stone=0x7f0d0008;
+        public static final int keyboard_bottom_padding_wp=0x7f0d002a;
         public static final int keyboard_horizontal_edges_padding=0x7f0d0004;
         public static final int keyboard_top_padding=0x7f0d0002;
         public static final int keyboard_top_padding_ics=0x7f0d000d;
@@ -1752,6 +1772,9 @@ containing a value of this type.
          */
         public static final int keyboard_top_padding_quick=0x7f0d001f;
         public static final int keyboard_top_padding_stone=0x7f0d0007;
+        /**  For WP 
+         */
+        public static final int keyboard_top_padding_wp=0x7f0d0029;
         public static final int maxKeyboardHeight=0x7f0d0000;
         public static final int maxKeyboardHeightTallKeys=0x7f0d001c;
         public static final int minKeyboardHeight=0x7f0d0001;
@@ -1759,6 +1782,7 @@ containing a value of this type.
         public static final int more_suggestions_info_ratio=0x7f0d001b;
         public static final int spacebar_text_ratio=0x7f0d0019;
         public static final int spacebar_text_ratio_quick=0x7f0d0024;
+        public static final int spacebar_text_ratio_wp=0x7f0d002e;
     }
     public static final class id {
         public static final int about_ime=0x7f070045;
@@ -1917,66 +1941,66 @@ containing a value of this type.
     public static final class string {
         /**  Title of the button to add custom style entry in the settings dialog [CHAR LIMIT=15] 
          */
-        public static final int add=0x7f0a009c;
+        public static final int add=0x7f0a009e;
         /**  Title of the option menu to add a new style entry in the preference settings [CHAR LIMIT=16] 
          */
-        public static final int add_style=0x7f0a009b;
+        public static final int add_style=0x7f0a009d;
         /**  Indicates that a word has been added to the dictionary 
          */
-        public static final int added_word=0x7f0a005b;
+        public static final int added_word=0x7f0a005d;
         /**  Option name for advanced settings screen [CHAR LIMIT=25] 
          */
-        public static final int advanced_settings=0x7f0a003d;
+        public static final int advanced_settings=0x7f0a003f;
         /**  Option summary for advanced settings screen [CHAR LIMIT=65 (two lines) or 30 (fits on one line, preferable)] 
          */
-        public static final int advanced_settings_summary=0x7f0a003e;
+        public static final int advanced_settings_summary=0x7f0a0040;
         /**  Title for the spell checking service settings screen 
          */
-        public static final int android_spell_checker_settings=0x7f0a0034;
+        public static final int android_spell_checker_settings=0x7f0a0036;
         /**  Application name for opensource Android keyboard. AOSP(Android Open Source Project) should not be translated. 
          */
-        public static final int aosp_android_keyboard_ime_name=0x7f0a002f;
+        public static final int aosp_android_keyboard_ime_name=0x7f0a0031;
         /**  Name of Android spell checker service. AOSP(Android Open Source Project) should not be translated. 
          */
-        public static final int aosp_spell_checker_service_name=0x7f0a0033;
+        public static final int aosp_spell_checker_service_name=0x7f0a0035;
         /**  Option to enable auto capitalization of sentences 
          */
-        public static final int auto_cap=0x7f0a0049;
+        public static final int auto_cap=0x7f0a004b;
         /**  Option to decide the auto correction threshold score 
  Option to enable auto correction [CHAR LIMIT=20]
          */
-        public static final int auto_correction=0x7f0a0051;
+        public static final int auto_correction=0x7f0a0053;
         /**  Description for auto correction [CHAR LIMIT=65 (two lines) or 30 (fits on one line, preferable)] 
          */
-        public static final int auto_correction_summary=0x7f0a0052;
+        public static final int auto_correction_summary=0x7f0a0054;
         /**  Option to suggest auto correction suggestions aggressively. Auto-corrects to a word which has even large edit distance from typed word. [CHAR LIMIT=20] 
          */
-        public static final int auto_correction_threshold_mode_aggeressive=0x7f0a0055;
-        public static final int auto_correction_threshold_mode_index_aggeressive=0x7f0a000f;
-        public static final int auto_correction_threshold_mode_index_modest=0x7f0a000e;
-        public static final int auto_correction_threshold_mode_index_off=0x7f0a000d;
-        public static final int auto_correction_threshold_mode_index_very_aggeressive=0x7f0a0010;
+        public static final int auto_correction_threshold_mode_aggeressive=0x7f0a0057;
+        public static final int auto_correction_threshold_mode_index_aggeressive=0x7f0a0010;
+        public static final int auto_correction_threshold_mode_index_modest=0x7f0a000f;
+        public static final int auto_correction_threshold_mode_index_off=0x7f0a000e;
+        public static final int auto_correction_threshold_mode_index_very_aggeressive=0x7f0a0011;
         /**  Option to suggest auto correction suggestions modestly. Auto-corrects only to a word which has small edit distance from typed word. [CHAR LIMIT=20] 
          */
-        public static final int auto_correction_threshold_mode_modest=0x7f0a0054;
+        public static final int auto_correction_threshold_mode_modest=0x7f0a0056;
         /**  Option to disable auto correction. [CHAR LIMIT=20] 
          */
-        public static final int auto_correction_threshold_mode_off=0x7f0a0053;
+        public static final int auto_correction_threshold_mode_off=0x7f0a0055;
         /**  Option to suggest auto correction suggestions very aggressively. Auto-corrects to a word which has even large edit distance from typed word. [CHAR LIMIT=20] 
          */
-        public static final int auto_correction_threshold_mode_very_aggeressive=0x7f0a0056;
+        public static final int auto_correction_threshold_mode_very_aggeressive=0x7f0a0058;
         /**  Option to enable using next word prediction 
          */
-        public static final int bigram_prediction=0x7f0a0059;
+        public static final int bigram_prediction=0x7f0a005b;
         /**  Description for "next word prediction" option. This displays suggestions even when there is no input, based on the previous word. 
          */
-        public static final int bigram_prediction_summary=0x7f0a005a;
+        public static final int bigram_prediction_summary=0x7f0a005c;
         /**  Option to enable next word correction 
          */
-        public static final int bigram_suggestion=0x7f0a0057;
+        public static final int bigram_suggestion=0x7f0a0059;
         /**  Option to enable next word suggestion. This uses the previous word in an attempt to improve the suggestions quality 
          */
-        public static final int bigram_suggestion_summary=0x7f0a0058;
+        public static final int bigram_suggestion_summary=0x7f0a005a;
         /**  This configuration is the index of the array {@link KeyboardSwitcher.KEYBOARD_THEMES}. 
  This configuration is the index of the array {@link KeyboardSwitcher.KEYBOARD_THEMES}. 
  This configuration is the index of the array {@link KeyboardSwitcher.KEYBOARD_THEMES}. 
@@ -1984,125 +2008,125 @@ containing a value of this type.
         public static final int config_default_keyboard_theme_index=0x7f0a0000;
         /**  Option to configure dictionaries 
          */
-        public static final int configure_dictionaries_title=0x7f0a004a;
+        public static final int configure_dictionaries_title=0x7f0a004c;
         /**  Title for configuring input method settings [CHAR LIMIT=35] 
          */
-        public static final int configure_input_method=0x7f0a0087;
+        public static final int configure_input_method=0x7f0a0089;
         /**  Category title for text prediction 
          */
-        public static final int correction_category=0x7f0a003b;
+        public static final int correction_category=0x7f0a003d;
         /**  Toast text to describe the same input style already exists [CHAR LIMIT=64]
          */
-        public static final int custom_input_style_already_exists=0x7f0a00a4;
+        public static final int custom_input_style_already_exists=0x7f0a00a6;
         /**  The message of the dialog to note that a custom input style needs to be enabled. [CHAR LIMIT=64] 
          */
-        public static final int custom_input_style_note_message=0x7f0a00a1;
+        public static final int custom_input_style_note_message=0x7f0a00a3;
         /**  Title of the preference settings for custom input styles (language and keyboard layout pairs) [CHAR LIMIT=35]
          */
-        public static final int custom_input_styles_title=0x7f0a009a;
+        public static final int custom_input_styles_title=0x7f0a009c;
         /**  dictionary pack package name /settings activity (for shared prefs and settings) 
          */
-        public static final int dictionary_pack_package_name=0x7f0a0029;
-        public static final int dictionary_pack_settings_activity=0x7f0a002a;
+        public static final int dictionary_pack_package_name=0x7f0a002b;
+        public static final int dictionary_pack_settings_activity=0x7f0a002c;
         /**  Title of the button to enable a custom input style entry in the settings dialog [CHAR LIMIT=15] 
          */
-        public static final int enable=0x7f0a00a2;
+        public static final int enable=0x7f0a00a4;
         /**  Option name for enabling insertion of suggestion spans (advanced option) [CHAR LIMIT=25] 
          */
-        public static final int enable_span_insert=0x7f0a0047;
+        public static final int enable_span_insert=0x7f0a0049;
         /**  Option summary for enabling insertion of suggestion spans (advanced option) [CHAR LIMIT=65] 
          */
-        public static final int enable_span_insert_summary=0x7f0a0048;
+        public static final int enable_span_insert_summary=0x7f0a004a;
         /**  Title for Latin keyboard debug settings activity / dialog 
          */
-        public static final int english_ime_debug_settings=0x7f0a0014;
+        public static final int english_ime_debug_settings=0x7f0a0015;
         /**  Title for Latin keyboard input options dialog [CHAR LIMIT=25] 
          */
-        public static final int english_ime_input_options=0x7f0a0031;
+        public static final int english_ime_input_options=0x7f0a0033;
         /**  Title for Latin keyboard  
          */
-        public static final int english_ime_name=0x7f0a002e;
+        public static final int english_ime_name=0x7f0a0030;
         /**  Title for Latin keyboard settings activity / dialog 
          */
-        public static final int english_ime_settings=0x7f0a0030;
+        public static final int english_ime_settings=0x7f0a0032;
         /**  Category title for general settings for Android keyboard 
          */
-        public static final int general_category=0x7f0a003a;
+        public static final int general_category=0x7f0a003c;
         /**  Inform the user that a particular language has an available dictionary 
          */
-        public static final int has_dictionary=0x7f0a008b;
+        public static final int has_dictionary=0x7f0a008d;
         /**  Add to dictionary hint 
          */
-        public static final int hint_add_to_dictionary=0x7f0a008a;
+        public static final int hint_add_to_dictionary=0x7f0a008c;
         /**  Option name for including other IMEs in the language switch list [CHAR LIMIT=30] 
          */
-        public static final int include_other_imes_in_language_switch_list=0x7f0a003f;
+        public static final int include_other_imes_in_language_switch_list=0x7f0a0041;
         /**  Option summary for including other IMEs in the language switch list [CHAR LIMIT=65] 
          */
-        public static final int include_other_imes_in_language_switch_list_summary=0x7f0a0040;
+        public static final int include_other_imes_in_language_switch_list_summary=0x7f0a0042;
         /**  Description for delay for dismissing a popup on screen: default value of the delay [CHAR LIMIT=15] 
          */
-        public static final int key_preview_popup_dismiss_default_delay=0x7f0a0044;
+        public static final int key_preview_popup_dismiss_default_delay=0x7f0a0046;
         /**  Option for the dismiss delay of the key popup [CHAR LIMIT=25] 
          */
-        public static final int key_preview_popup_dismiss_delay=0x7f0a0042;
+        public static final int key_preview_popup_dismiss_delay=0x7f0a0044;
         /**  Description for delay for dismissing a popup on keypress: no delay [CHAR LIMIT=15] 
          */
-        public static final int key_preview_popup_dismiss_no_delay=0x7f0a0043;
+        public static final int key_preview_popup_dismiss_no_delay=0x7f0a0045;
         /**  Title of the item to change the keyboard theme [CHAR LIMIT=20]
          */
-        public static final int keyboard_layout=0x7f0a008e;
+        public static final int keyboard_layout=0x7f0a0090;
         /**  Title of the spinner for choosing a keyboard layout of custom style in the settings dialog [CHAR LIMIT=15] 
          */
-        public static final int keyboard_layout_set=0x7f0a00a0;
+        public static final int keyboard_layout_set=0x7f0a00a2;
         /**  Label for soft enter key when it performs DONE action.  Must be short to fit on key! [CHAR LIMIT=5] 
          */
-        public static final int label_done_key=0x7f0a005f;
+        public static final int label_done_key=0x7f0a0061;
         /**  Label for soft enter key when it performs GO action.  Must be short to fit on key! [CHAR LIMIT=5] 
          */
-        public static final int label_go_key=0x7f0a005c;
+        public static final int label_go_key=0x7f0a005e;
         /**  Label for soft enter key when it performs NEXT action.  Must be short to fit on key! [CHAR LIMIT=5] 
          */
-        public static final int label_next_key=0x7f0a005d;
+        public static final int label_next_key=0x7f0a005f;
         /**  Label for "Pause" key of phone number keyboard.  Must be short to fit on key! [CHAR LIMIT=5] 
          */
-        public static final int label_pause_key=0x7f0a0064;
+        public static final int label_pause_key=0x7f0a0066;
         /**  Label for soft enter key when it performs PREVIOUS action.  Must be short to fit on key! [CHAR LIMIT=5] 
          */
-        public static final int label_previous_key=0x7f0a005e;
+        public static final int label_previous_key=0x7f0a0060;
         /**  Label for soft enter key when it performs SEND action.  Must be short to fit on key! [CHAR LIMIT=5] 
          */
-        public static final int label_send_key=0x7f0a0060;
+        public static final int label_send_key=0x7f0a0062;
         /**  Label for "switch to alphabetic" key.  Must be short to fit on key! [CHAR LIMIT=3] 
          */
-        public static final int label_to_alpha_key=0x7f0a0061;
+        public static final int label_to_alpha_key=0x7f0a0063;
         /**  Label for "switch to symbols" key.  Must be short to fit on key! [CHAR LIMIT=4] 
          */
-        public static final int label_to_symbol_key=0x7f0a0062;
+        public static final int label_to_symbol_key=0x7f0a0064;
         /**  Label for "switch to symbols with microphone" key. This string shouldn't include the "mic"
          part because it'll be appended by the code. Must be short to fit on key! [CHAR LIMIT=3] 
          */
-        public static final int label_to_symbol_with_microphone_key=0x7f0a0063;
+        public static final int label_to_symbol_with_microphone_key=0x7f0a0065;
         /**  Label for "Wait" key of phone number keyboard.  Must be short to fit on key! [CHAR LIMIT=5]
          */
-        public static final int label_wait_key=0x7f0a0065;
+        public static final int label_wait_key=0x7f0a0067;
         /**  Title for input language selection screen 
          */
-        public static final int language_selection_title=0x7f0a0088;
+        public static final int language_selection_title=0x7f0a008a;
         /**  Keyboard theme names 
          */
-        public static final int layout_basic=0x7f0a0017;
-        public static final int layout_gingerbread=0x7f0a001b;
-        public static final int layout_high_contrast=0x7f0a0018;
-        public static final int layout_ics=0x7f0a001c;
-        public static final int layout_ics_bigkeys=0x7f0a001e;
-        public static final int layout_ics_modified=0x7f0a001d;
-        public static final int layout_quick=0x7f0a001f;
-        public static final int layout_quick_clear=0x7f0a0020;
-        public static final int layout_quick_extra=0x7f0a0021;
-        public static final int layout_quick_extra_clear=0x7f0a0022;
-        public static final int layout_stone_bold=0x7f0a0019;
-        public static final int layout_stone_normal=0x7f0a001a;
+        public static final int layout_basic=0x7f0a0018;
+        public static final int layout_gingerbread=0x7f0a001c;
+        public static final int layout_high_contrast=0x7f0a0019;
+        public static final int layout_ics=0x7f0a001d;
+        public static final int layout_ics_bigkeys=0x7f0a001f;
+        public static final int layout_ics_modified=0x7f0a001e;
+        public static final int layout_quick=0x7f0a0020;
+        public static final int layout_quick_clear=0x7f0a0021;
+        public static final int layout_quick_extra=0x7f0a0022;
+        public static final int layout_quick_extra_clear=0x7f0a0023;
+        public static final int layout_stone_bold=0x7f0a001a;
+        public static final int layout_stone_normal=0x7f0a001b;
         /**  Word separator list is the union of all symbols except those that are not separators:
     weak_space_swapping_symbols | weak_space_stripping_symbols
             \ symbols_excluded_from_word_separators 
@@ -2119,83 +2143,84 @@ containing a value of this type.
          U+00BB: "»" RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK 
  <string name="layout_switch_back_symbols">\"\'&#x2018;&#x2019;&#x201A;&#x201B;&#x201C;&#x201D;&#x201E;&#x201F;&#x00AB;&#x00BB;</string> 
          */
-        public static final int layout_switch_back_symbols=0x7f0a0008;
-        public static final int main_choose=0x7f0a00ad;
+        public static final int layout_switch_back_symbols=0x7f0a0009;
+        public static final int layout_wp=0x7f0a0024;
+        public static final int main_choose=0x7f0a00af;
         /**  Name of the main dictionary, as opposed to auxiliary dictionaries (medical/entertainment/sports...) 
          */
-        public static final int main_dictionary=0x7f0a004b;
-        public static final int main_enable=0x7f0a00ac;
-        public static final int main_setting=0x7f0a00ae;
+        public static final int main_dictionary=0x7f0a004d;
+        public static final int main_enable=0x7f0a00ae;
+        public static final int main_setting=0x7f0a00b0;
         /**  Category title for misc options  
          */
-        public static final int misc_category=0x7f0a003c;
+        public static final int misc_category=0x7f0a003e;
         /**  Title of the button to postpone enabling a custom input style entry in the settings dialog [CHAR LIMIT=15] 
          */
-        public static final int not_now=0x7f0a00a3;
+        public static final int not_now=0x7f0a00a5;
         /**  Symbols that should convert weak spaces into real space 
          */
         public static final int phantom_space_promoting_symbols=0x7f0a0006;
         /**  Option to control whether or not to show a popup with a larger font on each key press. 
          */
-        public static final int popup_on_keypress=0x7f0a0039;
+        public static final int popup_on_keypress=0x7f0a003b;
         /**  Predefined subtypes (language:layout[:extraValue]) in semicolon separated format 
          */
-        public static final int predefined_subtypes=0x7f0a002d;
-        public static final int prefs_debug_mode=0x7f0a0015;
+        public static final int predefined_subtypes=0x7f0a002f;
+        public static final int prefs_debug_mode=0x7f0a0016;
         /**  Description for enabling to send user statistics to Google 
          */
-        public static final int prefs_description_log=0x7f0a008d;
+        public static final int prefs_description_log=0x7f0a008f;
         /**  Preferences item for enabling to send user statistics to Google 
          */
-        public static final int prefs_enable_log=0x7f0a008c;
-        public static final int prefs_force_non_distinct_multitouch=0x7f0a0016;
+        public static final int prefs_enable_log=0x7f0a008e;
+        public static final int prefs_force_non_distinct_multitouch=0x7f0a0017;
         /**  Title of the settings for keypress sound volume 
          */
-        public static final int prefs_keypress_sound_volume_settings=0x7f0a00a7;
+        public static final int prefs_keypress_sound_volume_settings=0x7f0a00a9;
         /**  Title of the settings for keypress vibration duration 
          */
-        public static final int prefs_keypress_vibration_duration_settings=0x7f0a00a6;
+        public static final int prefs_keypress_vibration_duration_settings=0x7f0a00a8;
         /**  Option to enable showing suggestions 
          */
-        public static final int prefs_show_suggestions=0x7f0a004c;
+        public static final int prefs_show_suggestions=0x7f0a004e;
         /**  Description for show suggestions 
          */
-        public static final int prefs_show_suggestions_summary=0x7f0a004d;
+        public static final int prefs_show_suggestions_summary=0x7f0a004f;
         /**   Default value of the visibility of the suggestion strip 
          */
-        public static final int prefs_suggestion_visibility_default_value=0x7f0a000c;
-        public static final int prefs_suggestion_visibility_hide_name=0x7f0a0050;
+        public static final int prefs_suggestion_visibility_default_value=0x7f0a000d;
+        public static final int prefs_suggestion_visibility_hide_name=0x7f0a0052;
         /**   Always hide the suggestion strip 
          */
-        public static final int prefs_suggestion_visibility_hide_value=0x7f0a000b;
-        public static final int prefs_suggestion_visibility_show_name=0x7f0a004e;
-        public static final int prefs_suggestion_visibility_show_only_portrait_name=0x7f0a004f;
+        public static final int prefs_suggestion_visibility_hide_value=0x7f0a000c;
+        public static final int prefs_suggestion_visibility_show_name=0x7f0a0050;
+        public static final int prefs_suggestion_visibility_show_only_portrait_name=0x7f0a0051;
         /**   Show the suggestion strip only on portrait mode 
          */
-        public static final int prefs_suggestion_visibility_show_only_portrait_value=0x7f0a000a;
+        public static final int prefs_suggestion_visibility_show_only_portrait_value=0x7f0a000b;
         /**   Always show the suggestion strip 
          */
-        public static final int prefs_suggestion_visibility_show_value=0x7f0a0009;
+        public static final int prefs_suggestion_visibility_show_value=0x7f0a000a;
         /**  Title of an option for usability study mode 
          */
-        public static final int prefs_usability_study_mode=0x7f0a00a5;
+        public static final int prefs_usability_study_mode=0x7f0a00a7;
         /**  Title of the button to remove a custom style entry in the settings dialog [CHAR LIMIT=15] 
          */
-        public static final int remove=0x7f0a009d;
+        public static final int remove=0x7f0a009f;
         /**  Title of the button to save a custom style entry in the settings dialog [CHAR LIMIT=15] 
          */
-        public static final int save=0x7f0a009e;
+        public static final int save=0x7f0a00a0;
         /**  Preference for input language selection 
          */
-        public static final int select_language=0x7f0a0089;
-        public static final int settings_ms=0x7f0a002b;
-        public static final int settings_warning_researcher_mode=0x7f0a002c;
+        public static final int select_language=0x7f0a008b;
+        public static final int settings_ms=0x7f0a002d;
+        public static final int settings_warning_researcher_mode=0x7f0a002e;
         /**  Option to play back sound on keypress in soft keyboard 
          */
-        public static final int sound_on_keypress=0x7f0a0038;
+        public static final int sound_on_keypress=0x7f0a003a;
         /**  Name of Android spell checker service 
          */
-        public static final int spell_checker_service_name=0x7f0a0032;
+        public static final int spell_checker_service_name=0x7f0a0034;
         /**  Threshold of the normalized score of the best suggestion for the spell checker to declare
          a word to be "recommended" 
          */
@@ -2206,195 +2231,197 @@ containing a value of this type.
         public static final int spellchecker_suggestion_threshold_value=0x7f0a0002;
         /**  Spoken description for the currently entered text 
          */
-        public static final int spoken_current_text_is=0x7f0a0067;
+        public static final int spoken_current_text_is=0x7f0a0069;
         /**  Spoken description for the "Shift" keyboard key when "Caps lock" is on. 
          */
-        public static final int spoken_description_caps_lock=0x7f0a006c;
+        public static final int spoken_description_caps_lock=0x7f0a006e;
         /**  Spoken description for the "Delete" keyboard key. 
          */
-        public static final int spoken_description_delete=0x7f0a006d;
+        public static final int spoken_description_delete=0x7f0a006f;
         /**  Spoken description for the "U+2022" (BULLET) keyboard key. 
          */
-        public static final int spoken_description_dot=0x7f0a0078;
+        public static final int spoken_description_dot=0x7f0a007a;
         /**  Spoken description for the "Mic" keyboard key. 
          */
-        public static final int spoken_description_mic=0x7f0a0074;
+        public static final int spoken_description_mic=0x7f0a0076;
         /**  Spoken feedback after changing to the alphanumeric keyboard. 
          */
-        public static final int spoken_description_mode_alpha=0x7f0a007d;
+        public static final int spoken_description_mode_alpha=0x7f0a007f;
         /**  Spoken feedback after changing to the phone dialer keyboard. 
          */
-        public static final int spoken_description_mode_phone=0x7f0a007e;
+        public static final int spoken_description_mode_phone=0x7f0a0080;
         /**  Spoken feedback after changing to the shifted phone dialer (symbols) keyboard. 
          */
-        public static final int spoken_description_mode_phone_shift=0x7f0a007f;
+        public static final int spoken_description_mode_phone_shift=0x7f0a0081;
         /**  Spoken feedback after changing to the symbols keyboard. 
          */
-        public static final int spoken_description_mode_symbol=0x7f0a007c;
+        public static final int spoken_description_mode_symbol=0x7f0a007e;
         /**  Spoken description for the "Return" keyboard key. 
          */
-        public static final int spoken_description_return=0x7f0a0076;
+        public static final int spoken_description_return=0x7f0a0078;
         /**  Spoken description for the "Search" keyboard key. 
          */
-        public static final int spoken_description_search=0x7f0a0077;
+        public static final int spoken_description_search=0x7f0a0079;
         /**  Spoken description for the "Settings" keyboard key. 
          */
-        public static final int spoken_description_settings=0x7f0a0071;
+        public static final int spoken_description_settings=0x7f0a0073;
         /**  Spoken description for the "Shift" keyboard key when "Shift" is off. 
          */
-        public static final int spoken_description_shift=0x7f0a006a;
+        public static final int spoken_description_shift=0x7f0a006c;
         /**  Spoken description for the "Shift" keyboard key when "Shift" is on. 
          */
-        public static final int spoken_description_shift_shifted=0x7f0a006b;
+        public static final int spoken_description_shift_shifted=0x7f0a006d;
         /**  Spoken feedback after turning "Caps lock" mode on. 
          */
-        public static final int spoken_description_shiftmode_locked=0x7f0a007a;
+        public static final int spoken_description_shiftmode_locked=0x7f0a007c;
         /**  Spoken feedback after turning "Shift" mode off. 
          */
-        public static final int spoken_description_shiftmode_off=0x7f0a007b;
+        public static final int spoken_description_shiftmode_off=0x7f0a007d;
         /**  Spoken feedback after turning "Shift" mode on. 
          */
-        public static final int spoken_description_shiftmode_on=0x7f0a0079;
+        public static final int spoken_description_shiftmode_on=0x7f0a007b;
         /**  Spoken description for the "Smiley" keyboard key. 
          */
-        public static final int spoken_description_smiley=0x7f0a0075;
+        public static final int spoken_description_smiley=0x7f0a0077;
         /**  Spoken description for the "Space" keyboard key. 
          */
-        public static final int spoken_description_space=0x7f0a0073;
+        public static final int spoken_description_space=0x7f0a0075;
         /**  Spoken description for the "Tab" keyboard key. 
          */
-        public static final int spoken_description_tab=0x7f0a0072;
+        public static final int spoken_description_tab=0x7f0a0074;
         /**  Spoken description for the "To Alpha" keyboard key. 
          */
-        public static final int spoken_description_to_alpha=0x7f0a006f;
+        public static final int spoken_description_to_alpha=0x7f0a0071;
         /**  Spoken description for the "To Numbers" keyboard key. 
          */
-        public static final int spoken_description_to_numeric=0x7f0a0070;
+        public static final int spoken_description_to_numeric=0x7f0a0072;
         /**  Spoken description for the "To Symbol" keyboard key. 
          */
-        public static final int spoken_description_to_symbol=0x7f0a006e;
+        public static final int spoken_description_to_symbol=0x7f0a0070;
         /**  Spoken description for unknown keyboard keys. 
          */
-        public static final int spoken_description_unknown=0x7f0a0069;
+        public static final int spoken_description_unknown=0x7f0a006b;
         /**  Spoken description when there is no text entered 
          */
-        public static final int spoken_no_text_entered=0x7f0a0068;
+        public static final int spoken_no_text_entered=0x7f0a006a;
         /**  Spoken description to let the user know that when typing in a password, they can plug in a headset in to hear spoken descriptions of the keys they type. [CHAR LIMIT=NONE] 
          */
-        public static final int spoken_use_headphones=0x7f0a0066;
+        public static final int spoken_use_headphones=0x7f0a0068;
         /**  Description for Bulgarian (BDS) subtype. 
          */
-        public static final int subtype_bulgarian_bds=0x7f0a0028;
+        public static final int subtype_bulgarian_bds=0x7f0a002a;
         /**  Description for English (United Kingdom) keyboard subtype [CHAR LIMIT=25] 
          */
-        public static final int subtype_en_GB=0x7f0a008f;
+        public static final int subtype_en_GB=0x7f0a0091;
         /**  Description for English (United States) keyboard subtype [CHAR LIMIT=25] 
          */
-        public static final int subtype_en_US=0x7f0a0090;
+        public static final int subtype_en_US=0x7f0a0092;
         /**  Generic subtype label 
          */
-        public static final int subtype_generic=0x7f0a0023;
-        public static final int subtype_generic_pcqwerty=0x7f0a0026;
+        public static final int subtype_generic=0x7f0a0025;
+        public static final int subtype_generic_pcqwerty=0x7f0a0028;
         /**  Description for generic subtype that has predefined layout.
          The string resource name must be "subtype_generic_<layout name>".
          The string resource with "No language" also must be added to strings.xml and the resource
          name must be "subtype_no_language_<layout name>" 
          */
-        public static final int subtype_generic_qwerty=0x7f0a0024;
-        public static final int subtype_generic_qwertz=0x7f0a0025;
-        public static final int subtype_generic_vietnamese=0x7f0a0027;
+        public static final int subtype_generic_qwerty=0x7f0a0026;
+        public static final int subtype_generic_qwertz=0x7f0a0027;
+        public static final int subtype_generic_vietnamese=0x7f0a0029;
         /**  Title of the spinner for choosing a language of custom style in the settings dialog [CHAR LIMIT=15] 
          */
-        public static final int subtype_locale=0x7f0a009f;
+        public static final int subtype_locale=0x7f0a00a1;
         /**  Description for language agnostic keyboard subtype [CHAR LIMIT=25] 
          */
-        public static final int subtype_no_language=0x7f0a0093;
+        public static final int subtype_no_language=0x7f0a0095;
         /**  Description for language agnostic AZERTY keyboard subtype [CHAR LIMIT=25] 
          */
-        public static final int subtype_no_language_azerty=0x7f0a0096;
+        public static final int subtype_no_language_azerty=0x7f0a0098;
         /**  Description for language agnostic Colemak keyboard subtype [CHAR LIMIT=25] 
          */
-        public static final int subtype_no_language_colemak=0x7f0a0098;
+        public static final int subtype_no_language_colemak=0x7f0a009a;
         /**  Description for language agnostic Dvorak keyboard subtype [CHAR LIMIT=25] 
          */
-        public static final int subtype_no_language_dvorak=0x7f0a0097;
+        public static final int subtype_no_language_dvorak=0x7f0a0099;
         /**  Description for language agnostic PC QWERTY keyboard subtype [CHAR LIMIT=25] 
          */
-        public static final int subtype_no_language_pcqwerty=0x7f0a0099;
+        public static final int subtype_no_language_pcqwerty=0x7f0a009b;
         /**  Description for language agnostic QWERTY keyboard subtype [CHAR LIMIT=25] 
          */
-        public static final int subtype_no_language_qwerty=0x7f0a0094;
+        public static final int subtype_no_language_qwerty=0x7f0a0096;
         /**  Description for language agnostic QWERTZ keyboard subtype [CHAR LIMIT=25] 
          */
-        public static final int subtype_no_language_qwertz=0x7f0a0095;
-        public static final int subtype_vi=0x7f0a00a9;
+        public static final int subtype_no_language_qwertz=0x7f0a0097;
+        public static final int subtype_vi=0x7f0a00ab;
         /**  Description for English (United Kingdom) keyboard subtype with explicit keyboard layout [CHAR LIMIT=25]
          This should be identical to subtype_en_GB aside from the trailing (%s). 
          */
-        public static final int subtype_with_layout_en_GB=0x7f0a0091;
+        public static final int subtype_with_layout_en_GB=0x7f0a0093;
         /**  Description for English (United States) keyboard subtype with explicit keyboard layout [CHAR LIMIT=25]
          This should be identical to subtype_en_US aside from the trailing (%s). 
          */
-        public static final int subtype_with_layout_en_US=0x7f0a0092;
-        public static final int subtype_with_layout_vi=0x7f0a00aa;
+        public static final int subtype_with_layout_en_US=0x7f0a0094;
+        public static final int subtype_with_layout_vi=0x7f0a00ac;
         /**  Symbols that are suggested between words 
          */
         public static final int suggested_punctuations=0x7f0a0003;
         /**  Option to suppress language switch key [CHAR LIMIT=30] 
          */
-        public static final int suppress_language_switch_key=0x7f0a0041;
-        /**  Symbols that do NOT separate words 
-         */
-        public static final int symbols_excluded_from_word_separators=0x7f0a0007;
-        public static final int typing_freedom=0x7f0a00ab;
+        public static final int suppress_language_switch_key=0x7f0a0043;
+        public static final int symbols_excluded_from_word_separators=0x7f0a0008;
+        public static final int typing_freedom=0x7f0a00ad;
         /**  Option name for enabling or disabling the use of names of people in Contacts for suggestion and correction [CHAR LIMIT=25] 
          */
-        public static final int use_contacts_dict=0x7f0a0045;
+        public static final int use_contacts_dict=0x7f0a0047;
         /**  Description for option enabling or disabling the use of names of people in Contacts for suggestion and correction [CHAR LIMIT=65] 
          */
-        public static final int use_contacts_dict_summary=0x7f0a0046;
+        public static final int use_contacts_dict_summary=0x7f0a0048;
         /**  Description for the spell checker option to turn on/off contact names lookup. [CHAR LIMIT=65] 
          */
-        public static final int use_contacts_for_spellchecking_option_summary=0x7f0a0036;
+        public static final int use_contacts_for_spellchecking_option_summary=0x7f0a0038;
         /**  Title for the spell checker option to turn on/off contact names lookup [CHAR LIMIT=25] 
          */
-        public static final int use_contacts_for_spellchecking_option_title=0x7f0a0035;
+        public static final int use_contacts_for_spellchecking_option_title=0x7f0a0037;
         /**  Option to provide vibrate/haptic feedback on keypress 
          */
-        public static final int vibrate_on_keypress=0x7f0a0037;
-        public static final int vietnamese_input_method=0x7f0a00a8;
+        public static final int vibrate_on_keypress=0x7f0a0039;
+        public static final int vietnamese_input_method=0x7f0a00aa;
         /**  Preferences item for enabling speech input 
          */
-        public static final int voice_input=0x7f0a0080;
+        public static final int voice_input=0x7f0a0082;
         /**  Voice Input modes 
  On settings screen, voice input pop-up menu option to show voice key on main keyboard [CHAR LIMIT=20] 
          */
-        public static final int voice_input_modes_main_keyboard=0x7f0a0081;
+        public static final int voice_input_modes_main_keyboard=0x7f0a0083;
         /**  On settings screen, voice input pop-up menu option to never show voice key [CHAR LIMIT=20] 
          */
-        public static final int voice_input_modes_off=0x7f0a0083;
+        public static final int voice_input_modes_off=0x7f0a0085;
         /**  Voice Input modes summary 
  On settings screen, voice input pop-up menu summary text to show voice key on main keyboard [CHAR LIMIT=20] 
          */
-        public static final int voice_input_modes_summary_main_keyboard=0x7f0a0084;
+        public static final int voice_input_modes_summary_main_keyboard=0x7f0a0086;
         /**  On settings screen, voice input pop-up menu summary text to never show voice key [CHAR LIMIT=20] 
          */
-        public static final int voice_input_modes_summary_off=0x7f0a0086;
+        public static final int voice_input_modes_summary_off=0x7f0a0088;
         /**  On settings screen, voice input pop-up menu summary text to show voice key on symbols keyboard [CHAR LIMIT=20] 
          */
-        public static final int voice_input_modes_summary_symbols_keyboard=0x7f0a0085;
+        public static final int voice_input_modes_summary_symbols_keyboard=0x7f0a0087;
         /**  On settings screen, voice input pop-up menu option to show voice key on symbols keyboard [CHAR LIMIT=20] 
          */
-        public static final int voice_input_modes_symbols_keyboard=0x7f0a0082;
-        public static final int voice_mode_main=0x7f0a0011;
-        public static final int voice_mode_off=0x7f0a0013;
-        public static final int voice_mode_symbols=0x7f0a0012;
+        public static final int voice_input_modes_symbols_keyboard=0x7f0a0084;
+        public static final int voice_mode_main=0x7f0a0012;
+        public static final int voice_mode_off=0x7f0a0014;
+        public static final int voice_mode_symbols=0x7f0a0013;
         /**  Symbols that should strip a weak space 
          */
         public static final int weak_space_stripping_symbols=0x7f0a0005;
         /**  Symbols that should be swapped with a weak space 
          */
         public static final int weak_space_swapping_symbols=0x7f0a0004;
+        /**  Symbols that do NOT separate words 
+ Word separator list 
+         */
+        public static final int word_separators=0x7f0a0007;
     }
     public static final class style {
         /**  Theme "Basic" 
@@ -2433,22 +2460,26 @@ containing a value of this type.
         /**  Theme "Stone bold" 
          */
         public static final int Keyboard_Stone_Bold=0x7f0e0017;
+        /**  Windows phone theme 
+         */
+        public static final int Keyboard_WP=0x7f0e0041;
         public static final int KeyboardIcons=0x7f0e0003;
         public static final int KeyboardIcons_Black=0x7f0e0000;
         public static final int KeyboardIcons_IceCreamSandwich=0x7f0e0001;
         public static final int KeyboardIcons_Quick=0x7f0e0002;
-        public static final int KeyboardTheme=0x7f0e0042;
-        public static final int KeyboardTheme_Gingerbread=0x7f0e0043;
-        public static final int KeyboardTheme_HighContrast=0x7f0e0041;
-        public static final int KeyboardTheme_IceCreamSandwich=0x7f0e0046;
-        public static final int KeyboardTheme_IceCreamSandwich_BigKeys=0x7f0e0044;
-        public static final int KeyboardTheme_IceCreamSandwich_TallKeys=0x7f0e0045;
-        public static final int KeyboardTheme_Quick=0x7f0e004a;
-        public static final int KeyboardTheme_Quick_Clear=0x7f0e0047;
-        public static final int KeyboardTheme_Quick_Extra=0x7f0e0049;
-        public static final int KeyboardTheme_Quick_Extra_Clear=0x7f0e0048;
-        public static final int KeyboardTheme_Stone=0x7f0e004c;
-        public static final int KeyboardTheme_Stone_Bold=0x7f0e004b;
+        public static final int KeyboardTheme=0x7f0e004d;
+        public static final int KeyboardTheme_Gingerbread=0x7f0e004e;
+        public static final int KeyboardTheme_HighContrast=0x7f0e004c;
+        public static final int KeyboardTheme_IceCreamSandwich=0x7f0e0051;
+        public static final int KeyboardTheme_IceCreamSandwich_BigKeys=0x7f0e004f;
+        public static final int KeyboardTheme_IceCreamSandwich_TallKeys=0x7f0e0050;
+        public static final int KeyboardTheme_Quick=0x7f0e0055;
+        public static final int KeyboardTheme_Quick_Clear=0x7f0e0052;
+        public static final int KeyboardTheme_Quick_Extra=0x7f0e0054;
+        public static final int KeyboardTheme_Quick_Extra_Clear=0x7f0e0053;
+        public static final int KeyboardTheme_Stone=0x7f0e0057;
+        public static final int KeyboardTheme_Stone_Bold=0x7f0e0056;
+        public static final int KeyboardTheme_WP=0x7f0e0058;
         public static final int KeyboardView=0x7f0e0005;
         public static final int KeyboardView_Gingerbread=0x7f0e001b;
         public static final int KeyboardView_HighContrast=0x7f0e0010;
@@ -2459,6 +2490,7 @@ containing a value of this type.
         public static final int KeyboardView_Quick_Extra=0x7f0e003d;
         public static final int KeyboardView_Stone=0x7f0e0013;
         public static final int KeyboardView_Stone_Bold=0x7f0e0018;
+        public static final int KeyboardView_WP=0x7f0e0042;
         public static final int LatinKeyboardView=0x7f0e0006;
         public static final int LatinKeyboardView_Gingerbread=0x7f0e001c;
         public static final int LatinKeyboardView_HighContrast=0x7f0e0011;
@@ -2469,35 +2501,44 @@ containing a value of this type.
         public static final int LatinKeyboardView_Quick_Extra=0x7f0e003e;
         public static final int LatinKeyboardView_Stone=0x7f0e0014;
         public static final int LatinKeyboardView_Stone_Bold=0x7f0e0019;
+        public static final int LatinKeyboardView_WP=0x7f0e0043;
         public static final int MoreKeysKeyboard=0x7f0e0007;
         public static final int MoreKeysKeyboard_Gingerbread=0x7f0e001d;
         public static final int MoreKeysKeyboard_IceCreamSandwich=0x7f0e0022;
         public static final int MoreKeysKeyboard_Quick=0x7f0e0033;
         public static final int MoreKeysKeyboard_Stone=0x7f0e0015;
+        public static final int MoreKeysKeyboard_WP=0x7f0e0044;
         public static final int MoreKeysKeyboardAnimation=0x7f0e0040;
         public static final int MoreKeysKeyboardPanelStyle=0x7f0e0009;
         public static final int MoreKeysKeyboardPanelStyle_IceCreamSandwich=0x7f0e0024;
         public static final int MoreKeysKeyboardPanelStyle_Quick=0x7f0e0035;
+        public static final int MoreKeysKeyboardPanelStyle_WP=0x7f0e0046;
         public static final int MoreKeysKeyboardView=0x7f0e0008;
         public static final int MoreKeysKeyboardView_Gingerbread=0x7f0e001e;
         public static final int MoreKeysKeyboardView_IceCreamSandwich=0x7f0e0023;
         public static final int MoreKeysKeyboardView_Quick=0x7f0e0034;
         public static final int MoreKeysKeyboardView_Stone=0x7f0e0016;
+        public static final int MoreKeysKeyboardView_WP=0x7f0e0045;
         public static final int MoreSuggestionsViewStyle=0x7f0e000c;
         public static final int MoreSuggestionsViewStyle_IceCreamSandwich=0x7f0e0027;
         public static final int MoreSuggestionsViewStyle_Quick=0x7f0e0038;
+        public static final int MoreSuggestionsViewStyle_WP=0x7f0e0049;
         public static final int SuggestionBackgroundStyle=0x7f0e000d;
         public static final int SuggestionBackgroundStyle_IceCreamSandwich=0x7f0e0028;
         public static final int SuggestionBackgroundStyle_Quick=0x7f0e0039;
+        public static final int SuggestionBackgroundStyle_WP=0x7f0e004a;
         public static final int SuggestionPreviewBackgroundStyle=0x7f0e000e;
         public static final int SuggestionPreviewBackgroundStyle_IceCreamSandwich=0x7f0e0029;
         public static final int SuggestionPreviewBackgroundStyle_Quick=0x7f0e003a;
+        public static final int SuggestionPreviewBackgroundStyle_WP=0x7f0e004b;
         public static final int SuggestionsStripBackgroundStyle=0x7f0e000a;
         public static final int SuggestionsStripBackgroundStyle_IceCreamSandwich=0x7f0e0025;
         public static final int SuggestionsStripBackgroundStyle_Quick=0x7f0e0036;
+        public static final int SuggestionsStripBackgroundStyle_WP=0x7f0e0047;
         public static final int SuggestionsViewStyle=0x7f0e000b;
         public static final int SuggestionsViewStyle_IceCreamSandwich=0x7f0e0026;
         public static final int SuggestionsViewStyle_Quick=0x7f0e0037;
+        public static final int SuggestionsViewStyle_WP=0x7f0e0048;
     }
     public static final class xml {
         public static final int additional_subtype_settings=0x7f050000;

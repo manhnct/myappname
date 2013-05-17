@@ -213,12 +213,15 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     
     
  // position start cursor
- 	private float start_x, start_y, curr_x, move_tick;
- 	private int cursor_position, next_position, text_length;
+ 	private float start_x, start_y, curr_x;
+ 	private int cursor_position, text_after;
  	private int check_long_press = -1;
- 	float startMotionDown ;
  	private boolean mSelection = false, mStartSlide = false;
  	private VelocityTracker mVelocityTracker = null;
+ 	
+ // go tat
+ 	private static String mSeparatorsWord;
+ 	private boolean vn_PAD, vn_PAC;
 
     public static class UIHandler extends StaticInnerHandlerWrapper<LatinIME> {
         private static final int MSG_UPDATE_SHIFT_STATE = 1;
@@ -243,6 +246,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                     res.getInteger(R.integer.config_delay_update_shift_state);
             mDoubleSpacesTurnIntoPeriodTimeout = res.getInteger(
                     R.integer.config_double_spaces_turn_into_period_timeout);
+            mSeparatorsWord = res.getString(R.string.word_separators);
         }
 
         @Override
@@ -668,6 +672,8 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     @SuppressWarnings("deprecation")
     private void onStartInputViewInternal(EditorInfo editorInfo, boolean restarting) {
         super.onStartInputView(editorInfo, restarting);
+        vn_PAC = mPrefs.getBoolean("vietnamese_PAC", false);
+        vn_PAD = mPrefs.getBoolean("vietnamese_PAD", false);
         final KeyboardSwitcher switcher = mKeyboardSwitcher;
         final LatinKeyboardView inputView = switcher.getKeyboardView();
 
@@ -723,7 +729,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 		public boolean onTouch(View v, MotionEvent event) {
 			// TODO Auto-generated method stub
 			int mLongPressTimer = 400;
-			int moveTick = -1;
 			int action = event.getActionMasked();
 			int index = event.getActionIndex();
 			int pointerId = event.getPointerId(index);
@@ -733,7 +738,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 			case MotionEvent.ACTION_DOWN:					
 				start_x = event.getX();
 				start_y = event.getY();
-				startMotionDown = event.getDownTime();
 				Key key = mtracker.getKeyOn((int) start_x, (int) start_y);
 				if(key != null)
 					if(key.mCode == Keyboard.CODE_DELETE) mSelection = true;
@@ -747,48 +751,52 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                 }
 				break;
 			case MotionEvent.ACTION_MOVE:
-				if(check_long_press == -1){
-					float deltaT = SystemClock.uptimeMillis() - startMotionDown;
-					mVelocityTracker.addMovement(event);
-					mVelocityTracker.computeCurrentVelocity(10000);
-					float x_velocity = VelocityTrackerCompat.getXVelocity(mVelocityTracker, pointerId);
-					if(Math.abs(x_velocity) >=5000)
-						check_long_press = 0;					
-					else 
-						if(deltaT > 150 && Math.abs(x_velocity) >= 1000){
-							check_long_press = 0;
-							start_x = event.getX();	
-						}
-					else 
-						if(deltaT >= mLongPressTimer)
-							check_long_press = 1;							
-					
+				int deltaM = (int) (event.getX() - start_x)/15;
+				if(deltaM + cursor_position < 0 || deltaM > text_after){
+					float deltaX = event.getX() - curr_x;
+					start_x += deltaX;
 				}
-				else 
-					if(check_long_press == 0){
-						if(!mStartSlide){							
-							final CharSequence currentText = ic.getExtractedText(new ExtractedTextRequest(), 0).text;
-							text_length = currentText.length();
-							cursor_position = ic.getTextBeforeCursor (text_length, 0).length();
-							next_position = cursor_position;
-							mStartSlide = true;
-						}else{
-							curr_x = event.getX();
-							int move =(int) (curr_x - start_x) / 15;	
-							
-							next_position += (int) move;
-							next_position = next_position <0 ? 0 : next_position > text_length ? text_length : next_position;
-							
-
-							if(mSelection)
-								ic.setSelection(next_position, cursor_position);
-							else
-								ic.setSelection(next_position, next_position);
-							
-							inputView.setKeyPreviewPopupEnabled(false,0);
-							start_x = move != 0 ? curr_x : start_x;
+				float deltaT = SystemClock.uptimeMillis() - event.getDownTime();
+				curr_x = event.getX();
+				int move =(int) (curr_x - start_x) / 15;
+				mVelocityTracker.addMovement(event);
+				mVelocityTracker.computeCurrentVelocity(10000);
+				float x_velocity = VelocityTrackerCompat.getXVelocity(mVelocityTracker, pointerId);
+				float y_velocity = VelocityTrackerCompat.getYVelocity(mVelocityTracker, pointerId);
+				if(check_long_press == -1){
+					if(deltaT >= mLongPressTimer){
+						if(Math.abs(x_velocity) <= 1000 && Math.abs(y_velocity) <= 1000)
+							check_long_press = 1;
+						else{
+							check_long_press = 0;
 						}
-					
+							
+					}else 
+						if(deltaT > 150){
+							if(Math.abs(x_velocity) >= 1000 && Math.abs(y_velocity) >= 1000){
+								check_long_press = 0;
+							}
+						}
+						else {
+							if(Math.abs(x_velocity) >=5000 && Math.abs(y_velocity) >=5000){
+								check_long_press = 0;
+							}
+						}
+				}
+				if(check_long_press == 0){
+					if(!mStartSlide){
+						final CharSequence currentText = ic.getExtractedText(new ExtractedTextRequest(), 0).text;
+						final int LENGTH = currentText.length();
+						cursor_position = ic.getTextBeforeCursor (LENGTH, 0).length();
+						text_after = LENGTH - cursor_position;
+						mStartSlide = true;
+					}
+					if(cursor_position + move >= 0)
+						if(mSelection)
+							ic.setSelection(cursor_position+move, cursor_position);
+						else
+							ic.setSelection(cursor_position+move, cursor_position+move);
+					inputView.setKeyPreviewPopupEnabled(false,0);
 				} 
 				mtracker.check_long_press = check_long_press;
 				break;
@@ -800,12 +808,12 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 				mStartSlide = false;
 				break;
 			case MotionEvent.ACTION_CANCEL:
-				mVelocityTracker.recycle();
 				break;
 			}
 			return false;
 			}
 		});
+        
         // Forward this event to the accessibility utilities, if enabled.
         final AccessibilityUtils accessUtils = AccessibilityUtils.getInstance();
         if (accessUtils.isTouchExplorationEnabled()) {
@@ -1660,11 +1668,8 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
     private void handleCharacter(final int primaryCode, final int x,
             final int y, final int spaceState) {
-    	int check =handleVietnameseCharacter(primaryCode, x, y, spaceState);
-    	if (check == 1) {
+    	if (handleVietnameseCharacter(primaryCode, x, y, spaceState)) {
     		adjustAccent(false);
-        	return;
-        }else if(check == 2){
         	return;
         }
     	
@@ -2027,6 +2032,119 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             }
         }
     }
+    
+    public boolean isVOWELS(String str){
+    	for(int i=0; i<VietnameseSpellChecker.VNVOWELS.length; i++){
+    		if(Character.toString(VietnameseSpellChecker.VNVOWELS[i]).equals(str)){
+    			return true;
+    		}
+    	}
+    	return false;
+    }
+    
+    public String change_PAD(boolean pac){
+    	Log.i(TAG, "come in change_PAD");
+    	String str_PAC = new String();
+    	if(pac) str_PAC = change_PAC();
+    	InputConnection ic = getCurrentInputConnection();
+    	String str = new String(), 
+    			temp = new String(),
+    			newStr = new String();
+    	boolean flag=false;
+    	if(ic == null) return newStr;
+    	else{
+    		for(int i=2; i<20; i++){
+    			str = ic.getTextBeforeCursor(i, 0).toString();
+    			if(str.isEmpty()) return newStr;
+    			temp = Character.toString(str.charAt(0));
+    			if(mSeparatorsWord.contains(temp)) {
+    				if(!mSeparatorsWord.contains(
+    						Character.toString(str.charAt(1)))) {
+    					flag=true;
+    					str = str.substring(1);
+    					Log.i(TAG,"str lenght is "+str.length());
+    				}
+    				break;
+    			}
+    		}
+    		if(str.length()>2) {
+    			flag = true;
+    		}
+    		if(flag){
+    			String comp = Character.toString(str.charAt(0));
+    			boolean isVowelUpper = false;
+    			if(!isVOWELS(Character.toString(str.charAt(1)))) return newStr;
+    			if(!str_PAC.isEmpty()){
+    				str = str.substring(0, str.length()-2)+str_PAC;
+    			}
+    			isVowelUpper = !Character.toString(str.charAt(1)).equals(
+    					Character.toString(str.charAt(1)).toLowerCase());
+    			if(comp.equals(comp.toLowerCase())){
+    				if(comp.equals("j")){
+        				newStr = "gi"+str.substring(1);
+        			}
+        			if(comp.equals("f")){
+        				newStr = "ph"+str.substring(1);
+        			}
+        			if(comp.equals("w")){
+        				newStr = "qu"+str.substring(1);
+        			}
+    			}
+    			else {
+    				if(comp.equals("J")){
+        				if(!isVowelUpper) newStr = "Gi"+str.substring(1);
+        				else newStr = "GI"+str.substring(1);
+        			}
+        			if(comp.equals("F")){
+        				if(!isVowelUpper) newStr = "Ph"+str.substring(1);
+        				else newStr = "PH"+str.substring(1);
+        			}
+        			if(comp.equals("W")){
+        				if(!isVowelUpper) newStr = "Qu"+str.substring(1);
+        				else newStr = "QU"+str.substring(1);
+        			}
+    			}
+    		}
+    	}
+    	return newStr;
+    }
+    
+    public String change_PAC(){
+    	InputConnection ic = getCurrentInputConnection();
+    	String str=new String(), 
+    			temp = new String(), 
+    			newStr=new String();
+    	Boolean flag=false;
+    	if(ic == null) return newStr;
+    	else{
+    		for(int i=2; i<20; i++){
+    			str = ic.getTextBeforeCursor(i, 0).toString();
+    			if(str.isEmpty()) return newStr;
+    			temp = Character.toString(str.charAt(0));
+    			if(isVOWELS(temp)){
+    				flag = true;
+    				break;
+    			}
+    			if(mSeparatorsWord.contains(temp)){
+    				return newStr;
+    			}
+    		}
+    		if(flag){
+    			String comp = Character.toString(str.charAt(1));
+    			if(comp.equals(comp.toLowerCase())){
+    				if(comp.equals("h")) newStr = "nh ";
+        			else if(comp.equals("g")) newStr = "ng ";
+        			else if(comp.equals("k")) newStr = "ch ";
+    			}
+    			else {
+    				if(comp.equals("H")) newStr = "NH ";
+        			else if(comp.equals("G")) newStr = "NG ";
+        			else if(comp.equals("K")) newStr = "CH ";
+    			}
+    		}
+    	}
+    	return newStr;
+    }
 
     @Override
     public void pickSuggestionManually(final int index, final CharSequence suggestion,
@@ -2181,7 +2299,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             final CharSequence prevWord = EditingUtils.getThisWord(getCurrentInputConnection(),
                     mSettingsValues.mWordSeparators);
             if (!TextUtils.isEmpty(prevWord)) {
-                suggestedWords = mSuggest.getBigramPredictions(prevWord);//CUON_G
+                suggestedWords = mSuggest.getBigramPredictions(prevWord);
             } else {
                 suggestedWords = null;
             }
@@ -2476,7 +2594,8 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     @Override
     public void onReleaseKey(int primaryCode, boolean withSliding) {
         mKeyboardSwitcher.onReleaseKey(primaryCode, withSliding);
-
+        
+        Log.i(TAG,  "on Rease Key");
         // If accessibility is on, ensure the user receives keyboard state updates.
         if (AccessibilityUtils.getInstance().isTouchExplorationEnabled()) {
             switch (primaryCode) {
@@ -2488,7 +2607,31 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                 break;
             }
         }
-
+        if (primaryCode == Keyboard.CODE_SPACE){
+        	InputConnection ic = getCurrentInputConnection();
+        	String str = new String();
+        	int x = 0;
+        	if(vn_PAC&&vn_PAD){
+        		str = change_PAD(true);
+        		if(change_PAC().isEmpty()) x=1;
+        		else x=2;
+        	}
+        	else if(vn_PAD){
+        		str = change_PAD(false);
+        		x = 1;
+        	}
+        	if(!str.isEmpty()){
+        		ic.deleteSurroundingText(str.length()-x, 0);
+        		ic.commitText(str, 1);
+        	}
+        	if(vn_PAC){
+        		str = change_PAC();
+            	if(!str.isEmpty()){
+            		ic.deleteSurroundingText(2, 0);
+            		ic.commitText(str, 1);
+            	}
+        	}
+        }
         if (Keyboard.CODE_DELETE == primaryCode) {
             // This is a stopgap solution to avoid leaving a high surrogate alone in a text view.
             // In the future, we need to deprecate deteleSurroundingText() and have a surrogate
@@ -2620,23 +2763,23 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         p.println("  mKeyPreviewPopupOn=" + mSettingsValues.mKeyPreviewPopupOn);
         p.println("  mInputAttributes=" + mInputAttributes.toString());
     }
-    private int handleVietnameseCharacter(int originalTypedChar, int x, int y, int spaceState) {
+    private boolean handleVietnameseCharacter(int originalTypedChar, int x, int y, int spaceState) {
     	if (mIsUsingTelexInputMethod )
     		return handleVietnameseCharacter_TELEX(originalTypedChar, x, y, spaceState);
     	if (mIsUsingVNIInputMethod )
     		return handleVietnameseCharacter_VNI(originalTypedChar, x, y, spaceState);
-    	return 0;
+    	return false;
     }
     
-    private int handleVietnameseCharacter_TELEX(int originalTypedChar, int x, int y, int spaceState) {
+    private boolean handleVietnameseCharacter_TELEX(int originalTypedChar, int x, int y, int spaceState) {
     	final int typedChar = Character.toLowerCase(originalTypedChar);
     	if (!shouldHandleVietnameseCharacter(typedChar)) {
-    		return 0;		
+    		return false;		
     	}
     	final boolean isComposingWord = mWordComposer.isComposingWord();
     	
     	final InputConnection ic = getCurrentInputConnection();
-        if (ic == null) return 0;
+        if (ic == null) return false;
                     	        
         mTempCurrentWord.setLength(0);
         StringBuilder currentWord = mTempCurrentWord;        
@@ -2657,28 +2800,14 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     	if (currentWord == null || currentWord.length() == 0) {
     		if (typedChar == 'w') {
     			mLastWConverted = originalTypedChar;
-    			ic.beginBatchEdit();
-    	        // TODO: if ic is null, does it make any sense to call this?                
     			handleCharacterWhileInBatchEdit(originalTypedChar == 'w' ? 'ư' : 'Ư', x, y, spaceState, ic);
-    	        ic.endBatchEdit();
-    			
-    			return 1;
-        	}else{
-        		for (int i = 0; i < CHARACTER_FJ.length; i++) {
-        			if (originalTypedChar == CHARACTER_FJ[i]){
-        				ic.beginBatchEdit();
-        				handleCharacterWhileInBatchEdit(CHARACTER_FJ_REPLACE[i].charAt(0), x, y, spaceState, ic);
-        				handleCharacterWhileInBatchEdit(CHARACTER_FJ_REPLACE[i].charAt(1), x, y, spaceState, ic);
-        				ic.endBatchEdit();
-        				return 2;
-        			}
-        		}
+    			return true;
         	}
-    		return 0;
+    		return false;
     	}
     	
     	if (!VietnameseSpellChecker.isVietnameseWord(currentWord)) {
-    		return 0;
+    		return false;
     	}    	
 
     	int replacedCharIndex = -1;
@@ -2834,28 +2963,28 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             }
             ic.endBatchEdit();
             
-            return shouldKeepCurrentChar ? 0 : 1; // return false to call the original handleCharacter
+            return shouldKeepCurrentChar ? false : true; // return false to call the original handleCharacter
             
     	} else if (typedChar == 'w') {
     		mLastWConverted = originalTypedChar;
     		handleCharacterWhileInBatchEdit(originalTypedChar == 'w' ? 'ư' : 'Ư', x, y, spaceState, ic);
-			return 1;
+			return true;
     	}
     	
-    	return 0;
+    	return false;
     }
     
-    private int handleVietnameseCharacter_VNI(int originalTypedChar, int x, int y, int spaceState) {
+    private boolean handleVietnameseCharacter_VNI(int originalTypedChar, int x, int y, int spaceState) {
     	Log.i(TAG, "handle Vietnamese Charater VNI begin");
     	final int typedChar = Character.toLowerCase(originalTypedChar);
 
     	if (!shouldHandleVietnameseCharacter(typedChar)) {
-    		return 0;		
+    		return false;		
     	}
     	final boolean isComposingWord = mWordComposer.isComposingWord();
     	
     	final InputConnection ic = getCurrentInputConnection();
-        if (ic == null) return 0;
+        if (ic == null) return false;
                     	        
         mTempCurrentWord.setLength(0);
         StringBuilder currentWord = mTempCurrentWord;        
@@ -2877,21 +3006,12 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     	}
     	
     	if (currentWord == null || currentWord.length() == 0) {
-    		for (int i = 0; i < CHARACTER_FJ.length; i++) {
-    			if (originalTypedChar == CHARACTER_FJ[i]){
-    				ic.beginBatchEdit();
-    				handleCharacterWhileInBatchEdit(CHARACTER_FJ_REPLACE[i].charAt(0), x, y, spaceState, ic);
-    				handleCharacterWhileInBatchEdit(CHARACTER_FJ_REPLACE[i].charAt(1), x, y, spaceState, ic);
-    				ic.endBatchEdit();
-    				return 2;
-    			}
-    		}
-    		return 0;
+    		return false;
     	}
     	
     	if (!VietnameseSpellChecker.isVietnameseWord(currentWord)) {
     		//Log.i(TAG, "handle Vietnamese Charater VNI: not is Vietnamese Word. Return false");
-    		return 0;
+    		return false;
     	}    	
 
     	int replacedCharIndex = -1;
@@ -3047,15 +3167,15 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             }
             ic.endBatchEdit();
             
-            return shouldKeepCurrentChar ? 0 : 1; // return false to call the original handleCharacter
+            return shouldKeepCurrentChar ? false : true; // return false to call the original handleCharacter
             
     	} else if (typedChar == 'w') {
     		mLastWConverted = originalTypedChar;
     		handleCharacterWhileInBatchEdit(originalTypedChar == 'w' ? 'ư' : 'Ư', x, y, spaceState, ic);
-			return 1;
+			return true;
     	}
     	
-    	return 0;
+    	return false;
     }
     
     private void adjustAccent(boolean fixUWOW) {
@@ -3158,9 +3278,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     		typedChar == '2' || // a2 -> à    
     		typedChar == '3' || // a3 -> ả
     		typedChar == '4' || // a4 -> ã
-    		typedChar == '5' || // a5 -> ạ
-    		typedChar == 'f' || // f->ph
-    		typedChar == 'j';	// f->gi	
+    		typedChar == '5';   // a5 -> ạ    		
     }
     
     private void handleVietnameseSwitchKey() {
@@ -3370,9 +3488,4 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     private static final int[] VN_VOWELS = VietnameseSpellChecker.VN_VOWELS;        
 
     private static final int MAX_VOWELS_SEQUENCE = 3;
-    
-    private static final int[] CHARACTER_FJ = { 'f', 'F', 'j', 'J' };
-	private static final String[] CHARACTER_FJ_REPLACE = { "ph", "Ph", "gi", "Gi" };
-
-
 }

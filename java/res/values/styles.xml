@@ -597,4 +597,108 @@
         <item name="android:windowExitAnimation">@anim/more_keys_keyboard_fadeout</item>
     </style>
     
+    
+    <!-- Windows phone theme -->
+    <style
+        name="Keyboard.WP"
+        parent="Keyboard"
+    >
+        <!-- This should be aligned with KeyboardSwitcher.KEYBOARD_THEMES[] -->
+        <item name="themeId">30</item>
+        <item name="keyboardTopPadding">@fraction/keyboard_top_padding_wp</item>
+        <item name="keyboardBottomPadding">@fraction/keyboard_bottom_padding_wp</item>
+        <item name="horizontalGap">@fraction/key_horizontal_gap_wp</item>
+        <item name="verticalGap">@fraction/key_bottom_gap_wp</item>
+        <item name="touchPositionCorrectionData">@array/touch_position_correction_data_ice_cream_sandwich</item>
+    </style>
+    <style
+        name="KeyboardView.WP"
+        parent="KeyboardView"
+    >
+        <item name="android:background">@drawable/keyboard_background_wp</item>
+        <item name="keyLetterRatio">@fraction/key_letter_ratio_wp</item>
+        <item name="keyBackground">@drawable/btn_keyboard_key_wp</item>
+        <item name="keyTextStyle">normal</item>
+        <item name="keyTextColor">#FF000000</item>
+        <item name="keyTextInactivatedColor">#66E0E4E5</item>
+        <item name="keyHintLetterColor">#A0000000</item>
+        <item name="keyHintLabelColor">#A0000000</item>
+        <item name="keyShiftedLetterHintInactivatedColor">#66E0E4E5</item>
+        <item name="keyShiftedLetterHintActivatedColor">#FFFFFFFF</item>        
+        <item name="keyPreviewHeight">@dimen/key_preview_height_quick</item>
+        <item name="keyPreviewTextRatio">@fraction/key_preview_text_ratio_quick</item>
+        <item name="keyPreviewBackground">@drawable/keyboard_key_feedback_quick</item>
+        <item name="keyPreviewLeftBackground">@drawable/keyboard_key_feedback_left_quick</item>
+        <item name="keyPreviewRightBackground">@drawable/keyboard_key_feedback_right_quick</item>
+        <item name="keyPreviewTextColor">#FFFFFFFF</item>
+        <item name="keyPreviewOffset">@dimen/key_preview_offset_quick</item>
+        <item name="shadowColor">#00000000</item>
+        <item name="shadowRadius">0</item>
+        <item name="backgroundDimAlpha">10</item>
+    </style>
+    <style
+        name="LatinKeyboardView.WP"
+        parent="KeyboardView.WP"
+    >
+        <item name="autoCorrectionSpacebarLedEnabled">false</item>
+        <item name="autoCorrectionSpacebarLedIcon">@drawable/sym_keyboard_space_led_holo</item>
+        <item name="spacebarTextRatio">@fraction/spacebar_text_ratio_wp</item>
+        <item name="spacebarTextColor">#A0000000</item>
+        <item name="spacebarTextShadowColor">#80000000</item>
+    </style>
+    <style
+        name="MoreKeysKeyboard.WP"
+        parent="Keyboard.WP"
+    >
+        <item name="keyboardTopPadding">0dp</item>
+        <item name="keyboardBottomPadding">0dp</item>
+        <item name="horizontalGap">0dp</item>
+    </style>
+    <style
+        name="MoreKeysKeyboardView.WP"
+        parent="MoreKeysKeyboardView"
+    >
+        <item name="android:background">@null</item>
+        <item name="keyBackground">@drawable/btn_keyboard_key_popup_ics</item>
+        <item name="verticalCorrection">@dimen/more_keys_keyboard_vertical_correction_ics</item>
+    </style>
+    <style name="MoreKeysKeyboardPanelStyle.WP">
+        <item name="android:background">@drawable/keyboard_popup_panel_background_holo</item>
+    </style>
+    <style name="SuggestionsStripBackgroundStyle.WP">
+        <item name="android:background">@drawable/keyboard_suggest_strip_wp</item>
+    </style>
+    <style
+        name="SuggestionsViewStyle.WP"
+        parent="SuggestionsStripBackgroundStyle.WP"
+    >
+        <item name="suggestionStripOption">autoCorrectBold|validTypedWordBold</item>
+        <item name="colorValidTypedWord">@android:color/holo_blue_light</item>
+        <item name="colorTypedWord">@android:color/holo_blue_light</item>
+        <item name="colorAutoCorrect">@android:color/holo_blue_light</item>
+        <item name="colorSuggested">@android:color/holo_blue_light</item>
+        <item name="alphaValidTypedWord">85</item>
+        <item name="alphaTypedWord">85</item>
+        <item name="alphaSuggested">70</item>
+        <item name="alphaObsoleted">70</item>
+        <item name="suggestionsCountInStrip">@integer/suggestions_count_in_strip</item>
+        <item name="centerSuggestionPercentile">@integer/center_suggestion_percentile</item>
+        <item name="maxMoreSuggestionsRow">@integer/max_more_suggestions_row</item>
+        <item name="minMoreSuggestionsWidth">@fraction/min_more_suggestions_width</item>
+    </style>
+    <style
+        name="MoreSuggestionsViewStyle.WP"
+        parent="MoreKeysKeyboardView.WP"
+    >
+    </style>
+    <style name="SuggestionBackgroundStyle.WP">
+        <item name="android:background">@drawable/btn_suggestion_ics</item>
+    </style>
+    <style
+        name="SuggestionPreviewBackgroundStyle.WP"
+        parent="MoreKeysKeyboardPanelStyle.WP"
+    >
+    </style>
+    
+    
     </resources>

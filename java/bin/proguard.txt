@@ -4,7 +4,7 @@
 # view res/layout/more_keys_keyboard.xml #generated:27
 -keep class com.android.inputmethod.keyboard.MoreKeysKeyboardView { <init>(...); }
 
-# view res/xml/prefs.xml #generated:132
+# view res/xml/prefs.xml #generated:148
 -keep class com.android.inputmethod.latin.AdditionalSubtypeSettings { <init>(...); }
 
 # view AndroidManifest.xml #generated:50

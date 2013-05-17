@@ -71,7 +71,8 @@ public class KeyboardSwitcher implements KeyboardState.SwitchActions {
         new KeyboardTheme("Quick", 20, R.style.KeyboardTheme_Quick),
         new KeyboardTheme("Quick (Clear)", 23, R.style.KeyboardTheme_Quick_Clear),
         new KeyboardTheme("Quick Extra", 21, R.style.KeyboardTheme_Quick_Extra),
-        new KeyboardTheme("Quick Extra (Clear)", 22, R.style.KeyboardTheme_Quick_Extra_Clear)        
+        new KeyboardTheme("Quick Extra (Clear)", 22, R.style.KeyboardTheme_Quick_Extra_Clear),
+        new KeyboardTheme("Windows Phone 8", 30, R.style.KeyboardTheme_WP)
     };
 
     private SubtypeSwitcher mSubtypeSwitcher;

@@ -27,6 +27,8 @@
     <!-- Symbols that should convert weak spaces into real space -->
     <string name="phantom_space_promoting_symbols">([*&amp;@{&lt;&gt;+=|</string>
     <!-- Symbols that do NOT separate words -->
+    <!-- Word separator list -->
+    <string name="word_separators">\u0020.,;:!?\n()[]*&amp;@{}/&lt;&gt;_+=|&quot;</string>
     <string name="symbols_excluded_from_word_separators">\'-</string>
     <!-- Word separator list is the union of all symbols except those that are not separators:
     weak_space_swapping_symbols | weak_space_stripping_symbols
@@ -121,6 +123,7 @@
     <string name="layout_quick_clear">Quick (Clear)</string>
     <string name="layout_quick_extra">Quick Extra</string>
     <string name="layout_quick_extra_clear">Quick Extra (Clear)</string>
+    <string name="layout_wp">Windows Phone 8</string>
 
     <!-- For keyboard theme switcher dialog -->
     <string-array name="keyboard_layout_modes">
@@ -137,6 +140,7 @@
         <item>@string/layout_ics</item>
         <item>@string/layout_ics_modified</item>
         <item>@string/layout_ics_bigkeys</item>
+        <item>@string/layout_wp</item>
         
     </string-array>
     <string-array name="keyboard_layout_modes_values">
@@ -153,6 +157,7 @@
         <item>5</item>
         <item>6</item>
         <item>7</item>
+        <item>12</item>
         
     </string-array>
 

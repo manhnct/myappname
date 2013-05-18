@@ -418,4 +418,14 @@ public class KeyboardSwitcher implements KeyboardState.SwitchActions {
             }
         }
     }
+    
+    public boolean isUper(){
+    	return mState.isUper();
+    }
+    public boolean isUperLocked(){
+    	return mState.isUperLocked();
+    }
+    public String printKeyboardState() {
+        return mState.toString();
+    }
 }

@@ -43,22 +43,31 @@
             android:persistent="true"
             android:defaultValue="true" />
         
-        <CheckBoxPreference 
-            android:title="@string/vietnamese_consonant"
-            android:key="typing_quick_consonant"
-            android:summary="f->ph, j->gi, w->qu. g->ng, h->nh, k->ch"
-            android:persistent="true"
-            android:defaultValue="true"/>
         
-        <CheckBoxPreference 
-            android:title="@string/vietnamese_after_seperator"
-            android:key="auto_after_seperator"
-            android:persistent="true"
-            android:defaultValue="true"/>
+        <PreferenceScreen 
+            android:title="@string/typing_quick"
+            android:key="typing_quick">
+             <CheckBoxPreference 
+                 android:title="@string/vietnamese_free_consonant"
+                 android:key="vietnamese_free_consonant"
+                 android:summary="w f dz j"
+                 android:persistent="true"
+                 android:defaultValue="false"/>
+             
+             <CheckBoxPreference 
+	            android:title="@string/vietnamese_consonant"
+	            android:key="typing_quick_consonant"
+	            android:summary="f->ph, j->gi, w->qu. g->ng, h->nh, k->ch"
+	            android:persistent="true"
+	            android:defaultValue="false"/>
         
-        
-        
-        
+	        <CheckBoxPreference 
+	            android:title="@string/vietnamese_after_seperator"
+	            android:key="auto_after_seperator"
+	            android:persistent="true"
+	            android:defaultValue="false"/>
+        </PreferenceScreen>
+       
     </PreferenceCategory>
     <PreferenceCategory
         android:title="@string/general_category"

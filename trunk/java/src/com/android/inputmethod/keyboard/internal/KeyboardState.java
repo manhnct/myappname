@@ -631,4 +631,11 @@ public class KeyboardState {
                 + " symbol=" + mSymbolKeyState
                 + " switch=" + switchStateToString(mSwitchState) + "]";
     }
+    
+    public boolean isUper(){
+    	return mAlphabetShiftState.isUper();
+    }
+    public boolean isUperLocked(){
+    	return mAlphabetShiftState.isUperLocked();
+    }
 }

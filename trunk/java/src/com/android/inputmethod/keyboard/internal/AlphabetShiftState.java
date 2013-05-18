@@ -111,6 +111,14 @@ public class AlphabetShiftState {
     public boolean isManualShiftedFromAutomaticShifted() {
         return mState == MANUAL_SHIFTED_FROM_AUTO;
     }
+    
+    public boolean isUper(){
+    	return mState == MANUAL_SHIFTED || mState == AUTOMATIC_SHIFTED;
+    }
+    
+    public boolean isUperLocked(){
+    	return mState == SHIFT_LOCKED;
+    }
 
     @Override
     public String toString() {

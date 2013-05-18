@@ -16,9 +16,13 @@
 
 package hcmut.cse.ten.quickkeyboardviet;
 
+import android.util.Log;
+import android.view.inputmethod.InputConnection;
+
 public class VietnameseSpellChecker {
 	public static final String INPUT_METHOD_TELEX = "Telex";
 	public static final String INPUT_METHOD_VNI = "VNI";
+	private static final String TAG = "VietnameseSpellChecker";
 	
 	/**
 	 * Kiểm tra đơn giản một từ có phải là từ tiếng Việt không
@@ -213,7 +217,65 @@ public class VietnameseSpellChecker {
 		}				
 		
 		return false;
-	}		
+	}	
+	
+	public static boolean adjustPA(StringBuilder word, boolean shiftState){
+    	Log.i(TAG, "come in change_PA" + word);
+		if(word.length()<2) {
+			return false;
+		}
+		int firstChar = word.charAt(0);
+		
+		boolean flag_pad = false;
+		for (int i = 0; i < CHARACTER_FJW.length; i++) {
+			if (flag_pad == true) break;
+			if (firstChar == CHARACTER_FJW[i]){
+				for(int j = 0 ; j < VN_VOWELS.length ; j++){
+					if( word.charAt(1) == VN_VOWELS[j]){
+				
+	    				if(shiftState){
+	    					word.replace(0, 1, CHARACTER_FJW_REPLACE[1][i]);
+	    				}else{
+	    					word.replace(0, 1, CHARACTER_FJW_REPLACE[0][i]);
+	    					
+	    				}
+	    				flag_pad = true;
+	    				break;
+	    				
+					}
+				}
+				
+			}
+			
+		}
+		
+		int lastChar = word.charAt(word.length()-1);
+		
+		boolean flag_pac = false;
+		for (int i = 0; i < CHARACTER_GHK.length; i++) {
+			if (flag_pac == true) break;
+			if (lastChar == CHARACTER_GHK[i]){
+				for(int j = 0 ; j < VN_VOWELS.length ; j++){
+					if( word.charAt(word.length()-2) == VN_VOWELS[j]){
+				
+	    				if(shiftState){
+	    					word.replace(word.length()-1, word.length(), CHARACTER_GHK_REPLACE[1][i]);
+	    				}else{
+	    					word.replace(word.length()-1, word.length(), CHARACTER_GHK_REPLACE[0][i]);
+	    					
+	    				}
+	    				flag_pac = true;
+	    				break;
+	    				
+					}
+				}
+				
+			}
+			
+		}
+		return flag_pad || flag_pac;
+		
+    }
 	
 	public static final int[] VN_VOWELS = {
     	'a', 'á', 'à', 'ả', 'ã', 'ạ',
@@ -306,4 +368,14 @@ public class VietnameseSpellChecker {
 	private static final int VOWEL_WITH_BREVE = 12 * 6;
 	
 	public static final int ACCENT_AUTO = 0;
+	
+	private static final int[] CHARACTER_FJW = { 'f', 'j', 'w', 'F', 'J', 'W' };
+	private static final String[][] CHARACTER_FJW_REPLACE =
+		{ { "ph", "gi", "qu", "Ph", "Gi", "Qu" },
+		  { "PH", "GI", "QU", "PH", "GI", "QU" } };
+	
+	private static final int[] CHARACTER_GHK = { 'g', 'h', 'k', 'G', 'H', 'K'};
+	private static final String[][] CHARACTER_GHK_REPLACE = 
+		{ { "ng", "nh", "ch", "Ng", "Nh", "Ch" },
+		  { "NG", "NH", "CH", "NG", "NH", "CH" } };
 }

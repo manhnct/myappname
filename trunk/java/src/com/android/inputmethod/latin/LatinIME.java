@@ -1400,6 +1400,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         // TODO: Consolidate the double space timer, mLastKeyTime, and the space state.
         if (primaryCode != Keyboard.CODE_SPACE) {
             mHandler.cancelDoubleSpacesTimer();
+            adjustPA(mKeyboardSwitcher.isUperLocked());
         }
 
         boolean didAutoCorrect = false;
@@ -1754,7 +1755,10 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     // Returns true if we did an autocorrection, false otherwise.
     private boolean handleSeparator(final int primaryCode, final int x, final int y,
             final int spaceState) {
-    	if (mIsVietnameseSubType) adjustAccent(true);
+    	if (mIsVietnameseSubType){
+    		adjustAccent(true);
+    		adjustPA(mKeyboardSwitcher.isUperLocked());
+    	}
     	
         // Should dismiss the "Touch again to save" message when handling separator
         if (mSuggestionsView != null && mSuggestionsView.dismissAddToDictionaryHint()) {
@@ -2674,46 +2678,10 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     	}
     	
     	if (currentWord == null || currentWord.length() == 0) {
-    		for (int i = 0; i < CHARACTER_FJW.length; i++) {
-    			if (typedChar == CHARACTER_FJW[i]){
-    				
-    				if(mKeyboardSwitcher.isUperLocked()){
-    					onTextInput(CHARACTER_FJW_REPLACE[2][i]);
-    					mHandelEnteredText = CHARACTER_FJW_REPLACE[2][i];
-    				}else if(mKeyboardSwitcher.isUper()){
-    					onTextInput(CHARACTER_FJW_REPLACE[1][i]);
-    					mHandelEnteredText = CHARACTER_FJW_REPLACE[1][i];
-    				}else{
-    					onTextInput(CHARACTER_FJW_REPLACE[0][i]);
-    					mHandelEnteredText = CHARACTER_FJW_REPLACE[0][i];
-    				}
-    				
-    				return 2;
-    			}
-    		}
+    		
     		return 0;
     	}
-    	for (int i = 0; i < CHARACTER_GHK.length; i++) {
-			if (typedChar == CHARACTER_GHK[i]){
-				for(int j = 0 ; j < VN_VOWELS.length ; j++){
-					if(currentWord.charAt(currentWord.length()-1) == VN_VOWELS[j]){
-						if(mKeyboardSwitcher.isUperLocked()){
-	    					onTextInput(CHARACTER_GHK_REPLACE[2][i]);
-	    					mHandelEnteredText = CHARACTER_GHK_REPLACE[2][i];
-	    				}else if(mKeyboardSwitcher.isUper()){
-	    					onTextInput(CHARACTER_GHK_REPLACE[1][i]);
-	    					mHandelEnteredText = CHARACTER_GHK_REPLACE[1][i];
-	    				}else{
-	    					onTextInput(CHARACTER_GHK_REPLACE[0][i]);
-	    					mHandelEnteredText = CHARACTER_GHK_REPLACE[0][i];
-	    				}
-	    				
-	    				return 2;
-					}
-					
-				}
-			}
-    	}
+    	
     	
     	if (!VietnameseSpellChecker.isVietnameseWord(currentWord)) {
     		return 0;
@@ -2915,48 +2883,11 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     	}
     	
     	if (currentWord == null || currentWord.length() == 0) {
-    		for (int i = 0; i < CHARACTER_FJW.length; i++) {
-    			if (typedChar == CHARACTER_FJW[i]){
-    				
-    				if(mKeyboardSwitcher.isUperLocked()){
-    					onTextInput(CHARACTER_FJW_REPLACE[2][i]);
-    					mHandelEnteredText = CHARACTER_FJW_REPLACE[2][i];
-    				}else if(mKeyboardSwitcher.isUper()){
-    					onTextInput(CHARACTER_FJW_REPLACE[1][i]);
-    					mHandelEnteredText = CHARACTER_FJW_REPLACE[1][i];
-    				}else{
-    					onTextInput(CHARACTER_FJW_REPLACE[0][i]);
-    					mHandelEnteredText = CHARACTER_FJW_REPLACE[0][i];
-    				}
-    				
-    				return 2;
-    			}
-    		}
+    		
     		return 0;
     	}
     	
-    	for (int i = 0; i < CHARACTER_GHK.length; i++) {
-			if (typedChar == CHARACTER_GHK[i]){
-				for(int j = 0 ; j < VN_VOWELS.length; j++){
-					if(currentWord.charAt(currentWord.length()-1) == VN_VOWELS[j]){
-						if(mKeyboardSwitcher.isUperLocked()){
-	    					onTextInput(CHARACTER_GHK_REPLACE[2][i]);
-	    					mHandelEnteredText = CHARACTER_GHK_REPLACE[2][i];
-	    				}else if(mKeyboardSwitcher.isUper()){
-	    					onTextInput(CHARACTER_GHK_REPLACE[1][i]);
-	    					mHandelEnteredText = CHARACTER_GHK_REPLACE[1][i];
-	    				}else{
-	    					onTextInput(CHARACTER_GHK_REPLACE[0][i]);
-	    					mHandelEnteredText = CHARACTER_GHK_REPLACE[0][i];
-	    				}
-	    				
-	    				return 2;
-					}
-					
-				}
-			}
-    	}
-    	
+    	  	
     	if (!VietnameseSpellChecker.isVietnameseWord(currentWord)) {
     		//Log.i(TAG, "handle Vietnamese Charater VNI: not is Vietnamese Word. Return false");
     		return 0;
@@ -3117,13 +3048,51 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             
             return shouldKeepCurrentChar ? 0 : 1; // return false to call the original handleCharacter
             
-    	} else if (typedChar == 'w') {
-    		mLastWConverted = originalTypedChar;
-    		handleCharacterWhileInBatchEdit(originalTypedChar == 'w' ? 'ư' : 'Ư', x, y, spaceState, ic);
-			return 1;
     	}
     	
     	return 0;
+    }
+    
+    private void adjustPA( boolean shiftState) {
+    	final boolean isComposingWord = mWordComposer.isComposingWord();
+    	
+    	final InputConnection ic = getCurrentInputConnection();
+        if (ic == null) return;
+                    	        
+        mTempCurrentWord.setLength(0);
+        StringBuilder currentWord = mTempCurrentWord;
+        if(currentWord == null)
+        	return;
+    	if (!isComposingWord) {
+    		currentWord.append(ic.getTextBeforeCursor(10, 0));
+    		if (currentWord != null) {
+    			for (int i = currentWord.length() - 1; i >= 0; i--) {
+    				if (mSettingsValues.isWordSeparator(currentWord.charAt(i))) {
+    					currentWord.delete(0, i + 1);
+    					break;
+    				}
+    			}
+    		}
+    	}
+    	else {
+    		currentWord.append(mWordComposer.getTypedWord());
+    	}
+    	int beforeLength = currentWord.length();
+    	if(! VietnameseSpellChecker.adjustPA(currentWord, shiftState))
+    		return;
+    	
+    	if (isComposingWord) {
+    		ic.beginBatchEdit();
+    		mWordComposer.setComposingWord(currentWord, mKeyboardSwitcher.getKeyboard());
+        	ic.setComposingText(getTextWithUnderline(mWordComposer.getTypedWord()), 1);
+        	mHandler.postUpdateSuggestions();
+            ic.endBatchEdit();
+    	} else {
+    		ic.deleteSurroundingText(beforeLength, 0);
+    		ic.commitText(currentWord, 1);
+    	}
+    	
+    	
     }
     
     private void adjustAccent(boolean fixUWOW) {
@@ -3445,16 +3414,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
     private static final int MAX_VOWELS_SEQUENCE = 3;
     
-    private static final int[] CHARACTER_FJW = { 'f', 'j', 'w' };
-	private static final String[][] CHARACTER_FJW_REPLACE =
-		{ { "ph", "gi", "qu" },
-		  { "Ph", "Gi", "Qu" },
-		  { "PH", "GI", "QU" } };
-	
-	private static final int[] CHARACTER_GHK = { 'g', 'h', 'k'};
-	private static final String[][] CHARACTER_GHK_REPLACE = 
-		{ { "ng", "nh", "ch" },
-		  { "Ng", "Nh", "Ch" },
-		  { "NG", "NH", "CH" } };
+    
 
 }

@@ -1,0 +1,42 @@
+# view res/layout/input_view.xml #generated:59
+-keep class com.android.inputmethod.keyboard.LatinKeyboardView { <init>(...); }
+
+# view res/layout/more_keys_keyboard.xml #generated:27
+-keep class com.android.inputmethod.keyboard.MoreKeysKeyboardView { <init>(...); }
+
+# view res/xml/prefs.xml #generated:148
+-keep class com.android.inputmethod.latin.AdditionalSubtypeSettings { <init>(...); }
+
+# view AndroidManifest.xml #generated:50
+-keep class com.android.inputmethod.latin.DebugSettingsActivity { <init>(...); }
+
+# view res/layout/input_view.xml #generated:21
+-keep class com.android.inputmethod.latin.InputView { <init>(...); }
+
+# view AndroidManifest.xml #generated:18
+-keep class com.android.inputmethod.latin.LatinIME { <init>(...); }
+
+# view AndroidManifest.xml #generated:36
+-keep class com.android.inputmethod.latin.SettingsActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:56
+-keep class com.android.inputmethod.latin.SuggestionSpanPickedNotificationReceiver { <init>(...); }
+
+# view AndroidManifest.xml #generated:27
+-keep class com.android.inputmethod.latin.spellcheck.AndroidSpellCheckerService { <init>(...); }
+
+# view AndroidManifest.xml #generated:43
+-keep class com.android.inputmethod.latin.spellcheck.SpellCheckerSettingsActivity { <init>(...); }
+
+# view res/layout/more_suggestions.xml #generated:27
+-keep class com.android.inputmethod.latin.suggestions.MoreSuggestionsView { <init>(...); }
+
+# view res/layout/input_view.xml #generated:46
+-keep class com.android.inputmethod.latin.suggestions.SuggestionsView { <init>(...); }
+
+# view AndroidManifest.xml #generated:13
+-keep class hcmut.cse.ten.quickkeyboardviet.BackupAgent { <init>(...); }
+
+# view AndroidManifest.xml #generated:61
+-keep class hcmut.cse.ten.quickkeyboardviet.MainActivity { <init>(...); }
+

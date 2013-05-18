@@ -151,4 +151,6 @@
 	<string name="main_enable">Bật Quick Keyboard Viet</string>
     <string name="main_choose">Chọn Quick Keyboard Viet Method</string>
     <string name="main_setting">Cài đặt Quick Keyboard</string>
+    <string name="vietnamese_consonant">Tự đổi phụ âm đầu và cuối</string>
+    <string name="vietnamese_after_seperator">Tự động cách sau dấu ,;</string>
 </resources>

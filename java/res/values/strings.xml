@@ -311,8 +311,10 @@
 	<color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     
-    <string name="typing_freedom">Typing freedom</string>
+    <string name="typing_freedom">Typing accent freedom</string>
     <string name="main_enable">Enable Quick Keyboard Viet</string>
     <string name="main_choose">Choose Quick Keyboard Viet Method</string>
     <string name="main_setting">Setting Quick Keyboard</string>
+    <string name="vietnamese_consonant">Type quick consonants</string>
+    <string name="vietnamese_after_seperator">Auto space after ,;</string>
 </resources>

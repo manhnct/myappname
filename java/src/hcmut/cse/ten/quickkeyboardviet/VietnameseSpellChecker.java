@@ -219,7 +219,7 @@ public class VietnameseSpellChecker {
 		return false;
 	}	
 	
-	public static boolean adjustPA(StringBuilder word, boolean shiftState){
+	public static boolean adjustConsonant(StringBuilder word, boolean shiftState){
     	Log.i(TAG, "come in change_PA" + word);
 		if(word.length()<2) {
 			return false;

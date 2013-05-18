@@ -86,6 +86,8 @@ public class SettingsValues {
     
     public boolean mVietnameseOff;
     public boolean mTypingFreedom;
+    public boolean mTypingQuickConsonant;
+    public boolean mAutoAfterSeperator;
     public final String mVietnameseInputMethod;
 
     public SettingsValues(final SharedPreferences prefs, final Context context) {
@@ -159,6 +161,8 @@ public class SettingsValues {
         
         mVietnameseOff = prefs.getBoolean("vietnamese_off", false);
         mTypingFreedom = prefs.getBoolean("typing_freedom", true);
+        mTypingQuickConsonant = prefs.getBoolean("typing_quick_consonant", true);
+        mAutoAfterSeperator = prefs.getBoolean("auto_after_seperator", true);
         mVietnameseInputMethod = prefs.getString("vietnamese_input_method", "Telex");
     }
 

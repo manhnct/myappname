@@ -78,6 +78,7 @@ import com.android.inputmethod.compat.CompatUtils;
 import com.android.inputmethod.compat.InputMethodManagerCompatWrapper;
 import com.android.inputmethod.compat.SuggestionSpanUtils;
 import com.android.inputmethod.keyboard.Key;
+import com.android.inputmethod.keyboard.KeyDetector;
 import com.android.inputmethod.keyboard.Keyboard;
 import com.android.inputmethod.keyboard.KeyboardActionListener;
 import com.android.inputmethod.keyboard.KeyboardId;
@@ -214,12 +215,11 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     
     
  // position start cursor
- 	private float start_x, start_y, curr_x, move_tick;
+ 	private float start_x, start_y, curr_x;
  	private int cursor_position, next_position, text_length;
  	private int check_long_press = -1;
  	float startMotionDown ;
  	private boolean mSelection = false, mStartSlide = false;
- 	private VelocityTracker mVelocityTracker = null;
 
     public static class UIHandler extends StaticInnerHandlerWrapper<LatinIME> {
         private static final int MSG_UPDATE_SHIFT_STATE = 1;
@@ -724,50 +724,35 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 		public boolean onTouch(View v, MotionEvent event) {
 			// TODO Auto-generated method stub
 			int mLongPressTimer = 400;
-			int moveTick = -1;
 			int action = event.getActionMasked();
-			int index = event.getActionIndex();
-			int pointerId = event.getPointerId(index);
-	        final PointerTracker mtracker = PointerTracker.getPointerTracker(pointerId,
+			PointerTracker mtracker = PointerTracker.getPointerTracker(0,
 					inputView);
+	        KeyDetector keyd = mtracker.mKeyDetector;
+	        Key key_start = null;
 			switch(action){
 			case MotionEvent.ACTION_DOWN:					
 				start_x = event.getX();
 				start_y = event.getY();
 				startMotionDown = event.getDownTime();
-				Key key = mtracker.getKeyOn((int) start_x, (int) start_y);
-				if(key != null)
-					if(key.mCode == Keyboard.CODE_DELETE) mSelection = true;
+				key_start = keyd.detectHitKey((int) start_x, (int) start_y);
+				if(key_start != null)
+					if(key_start.mCode == Keyboard.CODE_DELETE) mSelection = true;
 					else mSelection = false;
-				
-				if(mVelocityTracker == null) {
-					mVelocityTracker = VelocityTracker.obtain();
-                }
-                else {
-                    mVelocityTracker.clear();
-                }
 				break;
 			case MotionEvent.ACTION_MOVE:
 				if(check_long_press == -1){
 					float deltaT = SystemClock.uptimeMillis() - startMotionDown;
-					mVelocityTracker.addMovement(event);
-					mVelocityTracker.computeCurrentVelocity(10000);
-					float x_velocity = VelocityTrackerCompat.getXVelocity(mVelocityTracker, pointerId);
-					if(Math.abs(x_velocity) >=10000){
-						break;
-					}
-					else
-						if(Math.abs(x_velocity) >=5000)
-						check_long_press = 0;					
-					else 
-						if(deltaT > 150 && Math.abs(x_velocity) >= 1000){
-							check_long_press = 0;
-							start_x = event.getX();	
-						}
-					else 
-						if(deltaT >= mLongPressTimer)
-							check_long_press = 1;							
 					
+					Key key_curr = keyd.detectHitKey((int)event.getX(), (int)event.getY());
+					key_start = keyd.detectHitKey((int) start_x, (int) start_y);
+					if(deltaT < mLongPressTimer){
+						if(key_curr != null && key_start != null)
+							if(key_curr.mCode != key_start.mCode)
+								check_long_press = 0;
+					}else{
+						check_long_press = 1;
+					}
+						
 				}
 				else 
 					if(check_long_press == 0){
@@ -808,8 +793,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 				mStartSlide = false;
 				break;
 			case MotionEvent.ACTION_CANCEL:
-				mtracker.check_long_press = -1;
-				mVelocityTracker.recycle();
 				break;
 			}
 			return false;

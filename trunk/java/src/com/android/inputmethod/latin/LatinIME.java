@@ -474,6 +474,8 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         mIsUsingVNIInputMethod = mSettingsValues.mVietnameseInputMethod.equals(
         		VietnameseSpellChecker.INPUT_METHOD_VNI); 
         mTypingFreedom = mSettingsValues.mTypingFreedom;
+        mTypingQuickConsonant = mSettingsValues.mTypingQuickConsonant;
+        mAutoAfterSeperator = mSettingsValues.mAutoAfterSeperator;
     }
 
     // Has to be package-visible for unit tests
@@ -664,6 +666,10 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
     private void onStartInputInternal(EditorInfo editorInfo, boolean restarting) {
         super.onStartInput(editorInfo, restarting);
+        mTypingQuickConsonant = mPrefs.getBoolean("typing_quick_consonant", true);
+        mAutoAfterSeperator = mPrefs.getBoolean("auto_after_seperator", true);
+        mTypingFreedom = mPrefs.getBoolean("typing_freedom", true);
+     
     }
 
     @SuppressWarnings("deprecation")
@@ -1403,8 +1409,10 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         // TODO: Consolidate the double space timer, mLastKeyTime, and the space state.
         if (primaryCode != Keyboard.CODE_SPACE) {
             mHandler.cancelDoubleSpacesTimer();
-            if (mIsVietnameseSubType){
-				adjustPA(mKeyboardSwitcher.isUperLocked());
+            
+        }else{
+	        if (mIsVietnameseSubType && mTypingQuickConsonant){
+				adjustConsonant(mKeyboardSwitcher.isUperLocked());
 			}
         }
 
@@ -1457,11 +1465,13 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             mSpaceState = SPACE_STATE_NONE;
             if (mSettingsValues.isWordSeparator(primaryCode)) {
                 didAutoCorrect = handleSeparator(primaryCode, x, y, spaceState);
-                if(",;".contains(String.valueOf((char)primaryCode)) ){
-                	handleAfterSeperator(primaryCode, NOT_A_TOUCH_COORDINATE, NOT_A_TOUCH_COORDINATE, spaceState);
-                	//if(",;".contains(String.valueOf((char)primaryCode)) )
-                	mHandelEnteredText = String.valueOf((char)primaryCode) + " ";
-                	//Log.d(TAG, "mEnteredText: " + mEnteredText);
+                if(mAutoAfterSeperator){
+	                if(",;".contains(String.valueOf((char)primaryCode)) ){
+	                	handleAfterSeperator(primaryCode, NOT_A_TOUCH_COORDINATE, NOT_A_TOUCH_COORDINATE, spaceState);
+	                	//if(",;".contains(String.valueOf((char)primaryCode)) )
+	                	mHandelEnteredText = String.valueOf((char)primaryCode) + " ";
+	                	//Log.d(TAG, "mEnteredText: " + mEnteredText);
+	                }
                 }
             } else {
                 final Keyboard keyboard = mKeyboardSwitcher.getKeyboard();
@@ -1762,7 +1772,8 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             final int spaceState) {
     	if (mIsVietnameseSubType){
     		adjustAccent(true);
-    		adjustPA(mKeyboardSwitcher.isUperLocked());
+    		if(mTypingQuickConsonant)
+    			adjustConsonant(mKeyboardSwitcher.isUperLocked());
     	}
     	
         // Should dismiss the "Touch again to save" message when handling separator
@@ -1849,6 +1860,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     // ,; => ,; + ' '
     private void handleAfterSeperator(final int primaryCode, final int x, final int y,
             final int spaceState) {
+    	
     	final InputConnection ic = getCurrentInputConnection();
         if (null != ic) ic.beginBatchEdit();
         // TODO: if ic is null, does it make any sense to call this?                
@@ -3058,7 +3070,8 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     	return 0;
     }
     
-    private void adjustPA( boolean shiftState) {
+    private void adjustConsonant( boolean shiftState) {
+    	if(!mTypingQuickConsonant) return;
     	final boolean isComposingWord = mWordComposer.isComposingWord();
     	
     	final InputConnection ic = getCurrentInputConnection();
@@ -3083,7 +3096,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     		currentWord.append(mWordComposer.getTypedWord());
     	}
     	int beforeLength = currentWord.length();
-    	if(! VietnameseSpellChecker.adjustPA(currentWord, shiftState))
+    	if(! VietnameseSpellChecker.adjustConsonant(currentWord, shiftState))
     		return;
     	
     	if (isComposingWord) {
@@ -3230,6 +3243,8 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 	private boolean mIsUsingTelexInputMethod = false;
 	private boolean mIsUsingVNIInputMethod = false;
 	private boolean mTypingFreedom = true;
+	private boolean mTypingQuickConsonant = true;
+	private boolean mAutoAfterSeperator = true;
 	private static final StringBuilder mTempCurrentWord = new StringBuilder(20);	
     private boolean mIsVietnameseSubType = false;
     private boolean mIsVietnameseLayout = false;

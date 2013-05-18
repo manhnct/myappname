@@ -37,27 +37,28 @@
          android:entries="@array/vietnamese_input_methods"
          android:defaultValue="Telex" />
         
-        <PreferenceScreen 
-            android:title="Gõ tắt"
-            android:key="vietnamese_gotat"
-            android:summary="">
-            <CheckBoxPreference 
-                android:title="Tự đổi phụ âm đầu"
-                android:key="vietnamese_PAD"
-                android:summary="f->ph, j->gi. VD: fá->phá"
-                android:defaultValue="false"/>
-            <CheckBoxPreference 
-                android:title="Tự đổi phụ âm cuối"
-                android:key="vietnamese_PAC"
-                android:summary="h->nh, g->ng. VD: ngag->ngang"
-                android:defaultValue="false"/>
-        </PreferenceScreen>
-        
         <CheckBoxPreference
             android:key="typing_freedom"
             android:title="@string/typing_freedom"
             android:persistent="true"
             android:defaultValue="true" />
+        
+        <CheckBoxPreference 
+            android:title="@string/vietnamese_consonant"
+            android:key="typing_quick_consonant"
+            android:summary="f->ph, j->gi, w->qu. g->ng, h->nh, k->ch"
+            android:persistent="true"
+            android:defaultValue="true"/>
+        
+        <CheckBoxPreference 
+            android:title="@string/vietnamese_after_seperator"
+            android:key="auto_after_seperator"
+            android:persistent="true"
+            android:defaultValue="true"/>
+        
+        
+        
+        
     </PreferenceCategory>
     <PreferenceCategory
         android:title="@string/general_category"

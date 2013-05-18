@@ -1400,7 +1400,9 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         // TODO: Consolidate the double space timer, mLastKeyTime, and the space state.
         if (primaryCode != Keyboard.CODE_SPACE) {
             mHandler.cancelDoubleSpacesTimer();
-            adjustPA(mKeyboardSwitcher.isUperLocked());
+            if (mIsVietnameseSubType){
+				adjustPA(mKeyboardSwitcher.isUperLocked());
+			}
         }
 
         boolean didAutoCorrect = false;

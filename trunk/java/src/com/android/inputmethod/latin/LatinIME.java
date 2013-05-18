@@ -752,7 +752,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 					}else{
 						check_long_press = 1;
 					}
-						
 				}
 				else 
 					if(check_long_press == 0){

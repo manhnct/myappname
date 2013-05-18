@@ -82,7 +82,7 @@
     <import file="${sdk.dir}/tools/ant/build.xml" />
 
 	<target name="copy-release">
-		<copy file="${out.final.file}" tofile="deploy/VietnameseLatinIME-${version.name}.apk"
+		<copy file="${out.final.file}" tofile="deploy/QuickKeyboardViet-${version.name}.apk"
                 overwrite="true" encoding="utf-8" />
 	</target>
 

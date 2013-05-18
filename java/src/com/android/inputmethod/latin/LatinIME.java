@@ -747,10 +747,13 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 					key_start = keyd.detectHitKey((int) start_x, (int) start_y);
 					if(deltaT < mLongPressTimer){
 						if(key_curr != null && key_start != null)
-							if(key_curr.mCode != key_start.mCode)
+							if(key_curr.mCode != key_start.mCode){
 								check_long_press = 0;
+								mtracker.check_long_press = 0;
+							}
 					}else{
 						check_long_press = 1;
+						mtracker.check_long_press = 1;
 					}
 				}
 				else 
@@ -780,7 +783,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 							inputView.setKeyPreviewPopupEnabled(false,0);
 							start_x = move != 0 ? curr_x : start_x;
 						}
-						mtracker.check_long_press = 0;
+						//mtracker.check_long_press = 0;
 				} 
 				
 				break;

@@ -158,7 +158,7 @@ public class PointerTracker {
 
 	private DrawingProxy mDrawingProxy;
 	private TimerProxy mTimerProxy;
-	private KeyDetector mKeyDetector;
+	public KeyDetector mKeyDetector;
 	private KeyboardActionListener mListener = EMPTY_LISTENER;
 
 	private Keyboard mKeyboard;
@@ -774,6 +774,7 @@ public class PointerTracker {
 			if(check_long_press != 0)
 				detectAndSendKey(mCurrentKey, mKeyX, mKeyY);
 		}
+		check_long_press = -1;
 	}
 
 	public void onShowMoreKeysPanel(int x, int y, KeyEventHandler handler) {

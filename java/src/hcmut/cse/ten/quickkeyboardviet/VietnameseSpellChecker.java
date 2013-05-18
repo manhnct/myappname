@@ -29,13 +29,18 @@ public class VietnameseSpellChecker {
 	 * @param word
 	 * @return
 	 */
-	public static boolean isVietnameseWord(CharSequence word) {
+	public static boolean isVietnameseWord(CharSequence word, boolean isFreeConsonant) {
+		int[][] NON_VIETNAMESE = null;
+		if(isFreeConsonant) 
+			NON_VIETNAMESE = NON_VIETNAMESE_CHARACTERS_2;
+		else 
+			NON_VIETNAMESE = NON_VIETNAMESE_CHARACTERS;
     	for (int i = word.length() - 1; i >= 0; i--) {
     		int currentChar = word.charAt(i);
-    		for (int j = 0; j < NON_VIETNAMESE_CHARACTERS.length; j++) {
-    			if (currentChar == NON_VIETNAMESE_CHARACTERS[j][0] || 
-    				currentChar == NON_VIETNAMESE_CHARACTERS[j][0] + ('a' - 'A')) {
-    				if (i >= NON_VIETNAMESE_CHARACTERS[j][1]) {
+    		for (int j = 0; j < NON_VIETNAMESE.length; j++) {
+    			if (currentChar == NON_VIETNAMESE[j][0] || 
+    				currentChar == NON_VIETNAMESE[j][0] + ('a' - 'A')) {
+    				if (i >= NON_VIETNAMESE[j][1]) {
     					return false;
     				}
     			}			
@@ -351,6 +356,12 @@ public class VietnameseSpellChecker {
     	
     	'ư', 'ứ', 'ừ', 'ử', 'ữ', 'ự',    	
     	'Ư', 'Ứ', 'Ừ', 'Ử', 'Ữ', 'Ự'    	    	   	    	    	
+    };
+	
+	//Chấp nhận phụ âm đầu là các từ j,w,f...
+	private static final int[][] NON_VIETNAMESE_CHARACTERS_2 = {
+    	{'B', 1}, {'D', 1}, {'F', 1}, {'J', 1}, {'K', 1}, {'L', 1}, {'Q', 1}, 
+    	{'R', 2}, {'S', 1}, {'V', 1}, {'W', 1}, {'X', 1}, {'Z', 2}
     };
 	
 	private static final int[][] NON_VIETNAMESE_CHARACTERS = {

@@ -153,4 +153,6 @@
     <string name="main_setting">Cài đặt Quick Keyboard</string>
     <string name="vietnamese_consonant">Tự đổi phụ âm đầu và cuối</string>
     <string name="vietnamese_after_seperator">Tự động cách sau dấu ,;</string>
+    <string name="typing_quick">Gõ nhanh</string>
+    <string name="vietnamese_free_consonant">Dùng các phụ âm đầu</string>
 </resources>

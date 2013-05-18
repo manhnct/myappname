@@ -317,4 +317,6 @@
     <string name="main_setting">Setting Quick Keyboard</string>
     <string name="vietnamese_consonant">Type quick consonants</string>
     <string name="vietnamese_after_seperator">Auto space after ,;</string>
+    <string name="typing_quick">Typing quickly</string>
+    <string name="vietnamese_free_consonant">Using first consonant</string>
 </resources>

@@ -79,7 +79,7 @@
          in order to avoid having your file be overridden by tools such as "android update project"
     -->
     <!-- version-tag: 1 -->
-    <import file="${sdk.dir}/tools/ant/build.xml" />
+    <import file="D:\Soft\ADT\sdk\tools\ant\build.xml" />
 
 	<target name="copy-release">
 		<copy file="${out.final.file}" tofile="deploy/QuickKeyboardViet-${version.name}.apk"

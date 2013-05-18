@@ -221,6 +221,9 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
  	float startMotionDown ;
  	private boolean mSelection = false, mStartSlide = false;
 
+ 	
+ //Quick type
+ 	private boolean mIsFreeConsonant;
     public static class UIHandler extends StaticInnerHandlerWrapper<LatinIME> {
         private static final int MSG_UPDATE_SHIFT_STATE = 1;
         private static final int MSG_SPACE_TYPED = 4;
@@ -677,6 +680,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         super.onStartInputView(editorInfo, restarting);
         final KeyboardSwitcher switcher = mKeyboardSwitcher;
         final LatinKeyboardView inputView = switcher.getKeyboardView();
+        mIsFreeConsonant = mPrefs.getBoolean("vietnamese_free_consonant", false);
 
         if (editorInfo == null) {
             Log.e(TAG, "Null EditorInfo in onStartInputView()");
@@ -2700,7 +2704,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     	}
     	
     	
-    	if (!VietnameseSpellChecker.isVietnameseWord(currentWord)) {
+    	if (!VietnameseSpellChecker.isVietnameseWord(currentWord, mIsFreeConsonant)) {
     		return 0;
     	}    	
 
@@ -2905,7 +2909,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     	}
     	
     	  	
-    	if (!VietnameseSpellChecker.isVietnameseWord(currentWord)) {
+    	if (!VietnameseSpellChecker.isVietnameseWord(currentWord, mIsFreeConsonant)) {
     		//Log.i(TAG, "handle Vietnamese Charater VNI: not is Vietnamese Word. Return false");
     		return 0;
     	}    	

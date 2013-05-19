@@ -55,9 +55,16 @@
                  android:defaultValue="false"/>
              
              <CheckBoxPreference 
-	            android:title="@string/vietnamese_consonant"
-	            android:key="typing_quick_consonant"
-	            android:summary="f->ph, j->gi, w->qu. g->ng, h->nh, k->ch"
+	            android:title="@string/vietnamese_consonant_first"
+	            android:key="typing_quick_consonant_first"
+	            android:summary="f->ph, j->gi, w->qu"
+	            android:persistent="true"
+	            android:defaultValue="false"/>
+             
+             <CheckBoxPreference 
+	            android:title="@string/vietnamese_consonant_last"
+	            android:key="typing_quick_consonant_last"
+	            android:summary="g->ng, h->nh, k->ch"
 	            android:persistent="true"
 	            android:defaultValue="false"/>
         

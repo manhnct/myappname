@@ -16,6 +16,8 @@
 
 package hcmut.cse.ten.quickkeyboardviet;
 
+import com.android.inputmethod.latin.LatinIME;
+
 import android.util.Log;
 import android.view.inputmethod.InputConnection;
 
@@ -224,7 +226,8 @@ public class VietnameseSpellChecker {
 		return false;
 	}	
 	
-	public static boolean adjustConsonant(StringBuilder word, boolean shiftState){
+	public static boolean adjustConsonant(StringBuilder word, boolean shiftState,
+			boolean first, boolean last){
     	Log.i(TAG, "come in change_PA" + word);
 		if(word.length()<2) {
 			return false;
@@ -232,51 +235,60 @@ public class VietnameseSpellChecker {
 		int firstChar = word.charAt(0);
 		
 		boolean flag_pad = false;
-		for (int i = 0; i < CHARACTER_FJW.length; i++) {
-			if (flag_pad == true) break;
-			if (firstChar == CHARACTER_FJW[i]){
-				for(int j = 0 ; j < VN_VOWELS.length ; j++){
-					if( word.charAt(1) == VN_VOWELS[j]){
-				
-	    				if(shiftState){
-	    					word.replace(0, 1, CHARACTER_FJW_REPLACE[1][i]);
-	    				}else{
-	    					word.replace(0, 1, CHARACTER_FJW_REPLACE[0][i]);
-	    					
-	    				}
-	    				flag_pad = true;
-	    				break;
-	    				
+		if(first){
+			for (int i = 0; i < CHARACTER_FJW.length; i++) {
+				if (flag_pad == true) break;
+				if (firstChar == CHARACTER_FJW[i]){
+					for(int j = 0 ; j < VN_VOWELS.length ; j++){
+						if( word.charAt(1) == VN_VOWELS[j]){
+							String tempVowel = Character.toString(word.charAt(1));
+							String tempFirst = Character.toString(word.charAt(0));
+							if(tempFirst.equals(tempFirst.toLowerCase()))
+								word.replace(0, 1, CHARACTER_FJW_REPLACE[0][i]);
+							else{
+								if(!tempVowel.equals(tempVowel.toLowerCase())){
+			    					word.replace(0, 1, CHARACTER_FJW_REPLACE[1][i]);
+			    				}else{
+			    					word.replace(0, 1, CHARACTER_FJW_REPLACE[0][i]);
+			    				}
+							}
+		    				
+		    				flag_pad = true;
+		    				break;
+		    				
+						}
 					}
+					
 				}
 				
 			}
-			
 		}
 		
 		int lastChar = word.charAt(word.length()-1);
 		
 		boolean flag_pac = false;
-		for (int i = 0; i < CHARACTER_GHK.length; i++) {
-			if (flag_pac == true) break;
-			if (lastChar == CHARACTER_GHK[i]){
-				for(int j = 0 ; j < VN_VOWELS.length ; j++){
-					if( word.charAt(word.length()-2) == VN_VOWELS[j]){
-				
-	    				if(shiftState){
-	    					word.replace(word.length()-1, word.length(), CHARACTER_GHK_REPLACE[1][i]);
-	    				}else{
-	    					word.replace(word.length()-1, word.length(), CHARACTER_GHK_REPLACE[0][i]);
-	    					
-	    				}
-	    				flag_pac = true;
-	    				break;
-	    				
+		if(last){
+			for (int i = 0; i < CHARACTER_GHK.length; i++) {
+				if (flag_pac == true) break;
+				if (lastChar == CHARACTER_GHK[i]){
+					for(int j = 0 ; j < VN_VOWELS.length ; j++){
+						if( word.charAt(word.length()-2) == VN_VOWELS[j]){
+					
+		    				if(shiftState){
+		    					word.replace(word.length()-1, word.length(), CHARACTER_GHK_REPLACE[1][i]);
+		    				}else{
+		    					word.replace(word.length()-1, word.length(), CHARACTER_GHK_REPLACE[0][i]);
+		    					
+		    				}
+		    				flag_pac = true;
+		    				break;
+		    				
+						}
 					}
+					
 				}
 				
 			}
-			
 		}
 		return flag_pad || flag_pac;
 		

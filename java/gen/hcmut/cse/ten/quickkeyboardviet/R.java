@@ -2370,7 +2370,7 @@ containing a value of this type.
         public static final int suppress_language_switch_key=0x7f0a0043;
         public static final int symbols_excluded_from_word_separators=0x7f0a0008;
         public static final int typing_freedom=0x7f0a00ad;
-        public static final int typing_quick=0x7f0a00b3;
+        public static final int typing_quick=0x7f0a00b2;
         /**  Option name for enabling or disabling the use of names of people in Contacts for suggestion and correction [CHAR LIMIT=25] 
          */
         public static final int use_contacts_dict=0x7f0a0047;
@@ -2386,9 +2386,10 @@ containing a value of this type.
         /**  Option to provide vibrate/haptic feedback on keypress 
          */
         public static final int vibrate_on_keypress=0x7f0a0039;
-        public static final int vietnamese_after_seperator=0x7f0a00b2;
-        public static final int vietnamese_consonant=0x7f0a00b1;
-        public static final int vietnamese_free_consonant=0x7f0a00b4;
+        public static final int vietnamese_after_seperator=0x7f0a00b1;
+        public static final int vietnamese_consonant_first=0x7f0a00b4;
+        public static final int vietnamese_consonant_last=0x7f0a00b5;
+        public static final int vietnamese_free_consonant=0x7f0a00b3;
         public static final int vietnamese_input_method=0x7f0a00aa;
         /**  Preferences item for enabling speech input 
          */

@@ -315,8 +315,9 @@
     <string name="main_enable">Enable Quick Keyboard Viet</string>
     <string name="main_choose">Choose Quick Keyboard Viet Method</string>
     <string name="main_setting">Setting Quick Keyboard</string>
-    <string name="vietnamese_consonant">Type quick consonants</string>
     <string name="vietnamese_after_seperator">Auto space after ,;</string>
     <string name="typing_quick">Typing quickly</string>
     <string name="vietnamese_free_consonant">Using first consonant</string>
+    <string name="vietnamese_consonant_first">Adjust first consonant</string>
+    <string name="vietnamese_consonant_last">Adjust last consonant</string>
 </resources>

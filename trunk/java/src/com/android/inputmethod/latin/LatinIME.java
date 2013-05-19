@@ -669,10 +669,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
     private void onStartInputInternal(EditorInfo editorInfo, boolean restarting) {
         super.onStartInput(editorInfo, restarting);
-        mTypingQuickConsonant = mPrefs.getBoolean("typing_quick_consonant", true);
-        mAutoAfterSeperator = mPrefs.getBoolean("auto_after_seperator", true);
-        mTypingFreedom = mPrefs.getBoolean("typing_freedom", true);
-     
     }
 
     @SuppressWarnings("deprecation")
@@ -681,6 +677,11 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         final KeyboardSwitcher switcher = mKeyboardSwitcher;
         final LatinKeyboardView inputView = switcher.getKeyboardView();
         mIsFreeConsonant = mPrefs.getBoolean("vietnamese_free_consonant", false);
+        mQuickConsonantFirst = mPrefs.getBoolean("typing_quick_consonant_first", false);
+        mQuickConsonantLast = mPrefs.getBoolean("typing_quick_consonant_last", false);
+        mTypingQuickConsonant = mQuickConsonantFirst||mQuickConsonantLast;
+        mAutoAfterSeperator = mPrefs.getBoolean("auto_after_seperator", true);
+        mTypingFreedom = mPrefs.getBoolean("typing_freedom", true);
 
         if (editorInfo == null) {
             Log.e(TAG, "Null EditorInfo in onStartInputView()");
@@ -3100,7 +3101,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     		currentWord.append(mWordComposer.getTypedWord());
     	}
     	int beforeLength = currentWord.length();
-    	if(! VietnameseSpellChecker.adjustConsonant(currentWord, shiftState))
+    	if(! VietnameseSpellChecker.adjustConsonant(currentWord, shiftState, mQuickConsonantFirst, mQuickConsonantLast))
     		return;
     	
     	if (isComposingWord) {
@@ -3248,6 +3249,8 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 	private boolean mIsUsingVNIInputMethod = false;
 	private boolean mTypingFreedom = true;
 	private boolean mTypingQuickConsonant = true;
+	private boolean mQuickConsonantFirst = false;
+	private boolean mQuickConsonantLast = false;
 	private boolean mAutoAfterSeperator = true;
 	private static final StringBuilder mTempCurrentWord = new StringBuilder(20);	
     private boolean mIsVietnameseSubType = false;

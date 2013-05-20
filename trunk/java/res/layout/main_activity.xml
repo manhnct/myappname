@@ -43,6 +43,18 @@
 			android:paddingRight="10dp"
 			android:text="@string/main_setting"
 			android:textColor="@color/black" />
+	    
+	    <Button
+	        
+	        android:id="@+id/hide_icon"
+	        android:layout_width="fill_parent"	android:layout_height="wrap_content" 
+			android:layout_gravity="center_horizontal"
+			android:layout_marginLeft="20dp" android:layout_marginRight="20dp" android:layout_marginTop="20dp"
+			android:background="@drawable/button_bg"
+			android:paddingLeft="10dp"
+			android:paddingRight="10dp"
+			android:text="@string/hide_icon_app"
+			android:textColor="@color/black" />
 	
 	
 	

@@ -1785,7 +1785,7 @@ containing a value of this type.
         public static final int spacebar_text_ratio_wp=0x7f0d002e;
     }
     public static final class id {
-        public static final int about_ime=0x7f070045;
+        public static final int about_ime=0x7f070046;
         public static final int action=0x7f070008;
         public static final int actionCustomLabel=0x7f07003b;
         public static final int actionDone=0x7f070039;
@@ -1829,14 +1829,15 @@ containing a value of this type.
         public static final int hasHintLabel=0x7f07001b;
         public static final int hasPopupHint=0x7f070019;
         public static final int hasShiftedLetterHint=0x7f07001a;
+        public static final int hide_icon=0x7f070045;
         public static final int im=0x7f070032;
         public static final int isRepeatable=0x7f07000b;
         public static final int italic=0x7f070002;
         public static final int key_preview_backing=0x7f07003e;
         public static final int keyboard_layout_set_spinner=0x7f07003d;
         public static final int keyboard_view=0x7f070041;
-        public static final int more_keys_keyboard_view=0x7f070046;
-        public static final int more_suggestions_view=0x7f070047;
+        public static final int more_keys_keyboard_view=0x7f070047;
+        public static final int more_suggestions_view=0x7f070048;
         public static final int noKeyPreview=0x7f07000c;
         public static final int normal=0x7f070000;
         public static final int number=0x7f07002e;
@@ -1845,21 +1846,21 @@ containing a value of this type.
         public static final int preserveCase=0x7f07001f;
         public static final int settings_ime=0x7f070044;
         public static final int shiftedLetterActivated=0x7f070020;
-        public static final int sound_effect_volume_bar=0x7f070049;
-        public static final int sound_effect_volume_value=0x7f070048;
+        public static final int sound_effect_volume_bar=0x7f07004a;
+        public static final int sound_effect_volume_value=0x7f070049;
         public static final int stickyOff=0x7f070009;
         public static final int stickyOn=0x7f07000a;
         public static final int subtype_locale_spinner=0x7f07003c;
         public static final int suggestions_container=0x7f07003f;
-        public static final int suggestions_strip=0x7f07004a;
+        public static final int suggestions_strip=0x7f07004b;
         public static final int suggestions_view=0x7f070040;
         public static final int symbols=0x7f07002a;
         public static final int symbolsShifted=0x7f07002b;
         public static final int text=0x7f07002f;
         public static final int url=0x7f070030;
         public static final int validTypedWordBold=0x7f070006;
-        public static final int vibration_settings=0x7f07004c;
-        public static final int vibration_value=0x7f07004b;
+        public static final int vibration_settings=0x7f07004d;
+        public static final int vibration_value=0x7f07004c;
         public static final int withIconLeft=0x7f07001c;
         public static final int withIconRight=0x7f07001d;
     }
@@ -2055,6 +2056,7 @@ containing a value of this type.
         /**  Inform the user that a particular language has an available dictionary 
          */
         public static final int has_dictionary=0x7f0a008d;
+        public static final int hide_icon_app=0x7f0a00b1;
         /**  Add to dictionary hint 
          */
         public static final int hint_add_to_dictionary=0x7f0a008c;
@@ -2370,7 +2372,7 @@ containing a value of this type.
         public static final int suppress_language_switch_key=0x7f0a0043;
         public static final int symbols_excluded_from_word_separators=0x7f0a0008;
         public static final int typing_freedom=0x7f0a00ad;
-        public static final int typing_quick=0x7f0a00b2;
+        public static final int typing_quick=0x7f0a00b3;
         /**  Option name for enabling or disabling the use of names of people in Contacts for suggestion and correction [CHAR LIMIT=25] 
          */
         public static final int use_contacts_dict=0x7f0a0047;
@@ -2386,10 +2388,10 @@ containing a value of this type.
         /**  Option to provide vibrate/haptic feedback on keypress 
          */
         public static final int vibrate_on_keypress=0x7f0a0039;
-        public static final int vietnamese_after_seperator=0x7f0a00b1;
-        public static final int vietnamese_consonant_first=0x7f0a00b4;
-        public static final int vietnamese_consonant_last=0x7f0a00b5;
-        public static final int vietnamese_free_consonant=0x7f0a00b3;
+        public static final int vietnamese_after_seperator=0x7f0a00b2;
+        public static final int vietnamese_consonant_first=0x7f0a00b5;
+        public static final int vietnamese_consonant_last=0x7f0a00b6;
+        public static final int vietnamese_free_consonant=0x7f0a00b4;
         public static final int vietnamese_input_method=0x7f0a00aa;
         /**  Preferences item for enabling speech input 
          */

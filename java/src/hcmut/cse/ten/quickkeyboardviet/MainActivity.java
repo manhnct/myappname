@@ -2,11 +2,10 @@ package hcmut.cse.ten.quickkeyboardviet;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
@@ -50,6 +49,17 @@ public class MainActivity extends Activity {
 				startActivity(i);
 			}
 		});
+		
+		Button hide_icon = (Button) findViewById(R.id.hide_icon);
+		hide_icon.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				hideIcon();
+				removeIconDialog().show();
+			}
+		});
 	}
 
 	public AlertDialog onCreateDialog() {
@@ -67,6 +77,26 @@ public class MainActivity extends Activity {
 				});
 		return builder.create();
 
+	}
+	
+	public AlertDialog removeIconDialog(){
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle("Remove icon")
+				.setMessage("The icon was removed.")
+				.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface arg0, int arg1) {
+						// TODO Auto-generated method stub
+						
+					}
+				});
+		return builder.create();
+	}
+	
+	public void hideIcon(){
+		PackageManager pm = getApplicationContext().getPackageManager(); 
+		pm.setComponentEnabledSetting(getComponentName(), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
 	}
 
 }
